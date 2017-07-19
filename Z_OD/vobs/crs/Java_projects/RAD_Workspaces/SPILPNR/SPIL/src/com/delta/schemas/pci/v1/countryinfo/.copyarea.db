@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\pci\v1\countryinfo
+2
+3
+17:ISO3166CountryInfo.java|1|15b7c6142a0|1322|2bc95dff|a861f898711211e099a8000180ed7ddd|0
+12:ObjectFactory.java|1|15b7c6142eb|510|bb908b86|a861f8a8711211e099a8000180ed7ddd|0
+11:package-info.java|1|15b7c614343|f2|e39f4929|a861f8b8711211e099a8000180ed7ddd|0

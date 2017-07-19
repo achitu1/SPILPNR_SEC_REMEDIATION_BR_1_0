@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\pci\v1\dictionary
+2
+4
+d:ItemType.java|1|15b7c614464|904|dd927e41|a861f8dc711211e099a8000180ed7ddd|0
+13:DictionaryType.java|1|15b7c614402|832|6b0a650c|a861f8cc711211e099a8000180ed7ddd|0
+12:ObjectFactory.java|1|15b7c6144cb|83f|99d78cdf|a901f8ec711211e099a8000180ed7ddd|0
+11:package-info.java|1|15b7c61452b|134|220f6064|a901f8fc711211e099a8000180ed7ddd|0

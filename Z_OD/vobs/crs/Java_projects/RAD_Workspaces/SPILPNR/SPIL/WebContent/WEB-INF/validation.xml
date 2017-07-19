@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "validator_1_0.dtd">
+
+<form-validation>
+
+<!--
+     This is a blank Validator form file with a commented examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+    <formset>
+
+		<form name="flightInquiryForm">
+			<field
+				property="airlineCode"
+				depends="required">
+					<arg0 key="spl.flight.filter.field.AIRLINECODE"/>
+			</field>
+			<field
+				property="flightNumber"
+				depends="required">
+					<arg0 key="spl.flight.filter.field.FLIGHTNUMBER"/>		
+			</field>
+			<field
+				property="localDepartureDate"
+				depends="required,dateCustom01">
+                <arg0 key="spl.flight.filter.field.LOCALDEPARTUREDATE"/>
+			</field>
+		</form>
+		
+		<form name="passengerInquiryForm">
+			<field
+				property="passengerName"
+				depends="required,minlength">
+					<arg0 key="spl.passenger.filter.field.PASSENGERNAME"/>
+					<var>
+            			<var-name>minlength</var-name>
+            			<var-value>3</var-value>
+          			</var>
+          			<msg key="spl.passenger.minlength.PASSENGERNAME" name="minlength" />
+					
+			</field>
+			<field
+				property="localDepartureDate"
+				depends="required,dateCustom01">
+                <arg0 key="spl.passenger.filter.field.LOCALDEPARTUREDATE"/>   
+			</field>
+		</form>
+		
+		<form name="frequentFlierInquiryForm">
+			<field
+				property="airlineCode"
+				depends="required">
+					<arg0 key="spl.frequentflier.filter.field.AIRLINECODE"/>
+			</field>
+			<field
+				property="programId"
+				depends="required">
+					<arg0 key="spl.frequentflier.filter.field.PROGRAMID"/>
+			</field>
+		</form>
+		
+		<form name="otherInquiryForm">
+            <field property="ticketNumber" depends="requiredif">
+                <arg0 key="spl.other.filter.field.TICKETNUMBER" />
+  				<var>
+    				<var-name>field[0]</var-name>
+    				<var-value>pnrLocator</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[0]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[1]</var-name>
+    				<var-value>governmentId</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[1]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+            </field>
+            <field property="pnrLocator" depends="requiredif">
+                <arg0 key="spl.other.filter.field.PNRLOCATOR" />
+  				<var>
+    				<var-name>field[0]</var-name>
+    				<var-value>ticketNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[0]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[1]</var-name>
+    				<var-value>governmentId</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[1]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+            </field>
+            <field property="governmentId" depends="requiredif">
+                <arg0 key="spl.other.filter.field.GOVERNMENTID" />
+                
+  				<var>
+    				<var-name>field[0]</var-name>
+    				<var-value>ticketNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[0]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[1]</var-name>
+    				<var-value>pnrLocator</var-value>
+    				
+  				</var>
+  				<var>
+    				<var-name>fieldTest[1]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+            </field>
+		</form>
+		
+				
+		<form name="waitlistInquiryForm">
+			<field
+				property="localDepartureDate"
+				depends="dateCustom01">
+                <arg0 key="spl.waitlist.filter.field.LOCALDEPARTUREDATE"/>
+			</field>
+			<field depends="minlength" property="passengerName">
+          		<arg0 key="spl.passenger.filter.field.PASSENGERNAME" resource="false" />
+          		<var>
+            		<var-name>minlength</var-name>
+            		<var-value>3</var-value>
+          		</var>
+          		<msg key="spl.passenger.minlength.PASSENGERNAME" name="minlength" />
+        </field>
+			
+		</form>
+		<form name="ssrInquiryForm">
+			<field
+				property="airlineCode"
+				depends="required">
+					<arg0 key="spl.flight.filter.field.AIRLINECODE"/>
+			</field>
+			<field
+				property="flightNumber"
+				depends="required">
+					<arg0 key="spl.flight.filter.field.FLIGHTNUMBER"/>		
+			</field>
+			<field
+				property="localDepartureDate"
+				depends="required,dateCustom01">
+                <arg0 key="spl.flight.filter.field.LOCALDEPARTUREDATE"/>   
+			</field>
+		</form>
+		<!-- PNRJ Validation -->
+		
+		<!-- Passenger Lookup Form START -->
+		<!--  
+		<form name="lookupDefaultForm">
+            <field property="pnrLocator" depends="requiredif">
+                <arg0 key="pnr.defaultlookup.filter.field.PNRLOCATOR" />
+  				<var>
+    				<var-name>field[0]</var-name>
+    				<var-value>ticketNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[0]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[1]</var-name>
+    				<var-value>employeeNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[1]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[2]</var-name>
+    				<var-value>frequentFlyerNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[2]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[3]</var-name>
+    				<var-value>creditCardNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[3]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+            </field>
+            <field property="ticketNumber" depends="requiredif">
+                <arg0 key="pnr.defaultlookup.filter.field.TICKETNO" />
+  				<var>
+    				<var-name>field[0]</var-name>
+    				<var-value>pnrLocator</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[0]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[1]</var-name>
+    				<var-value>employeeNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[1]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[2]</var-name>
+    				<var-value>frequentFlyerNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[2]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[3]</var-name>
+    				<var-value>creditCardNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[3]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+            </field>
+            <field property="employeeNumber" depends="requiredif">
+                <arg0 key="pnr.defaultlookup.filter.field.EMPLOYEENO" />
+  				<var>
+    				<var-name>field[0]</var-name>
+    				<var-value>pnrLocator</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[0]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[1]</var-name>
+    				<var-value>ticketNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[1]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[2]</var-name>
+    				<var-value>frequentFlyerNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[2]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[3]</var-name>
+    				<var-value>creditCardNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[3]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+            </field>
+            <field property="frequentFlyerNumber" depends="requiredif">
+                <arg0 key="pnr.defaultlookup.filter.field.FREQUENTFLYERNO" />
+  				<var>
+    				<var-name>field[0]</var-name>
+    				<var-value>pnrLocator</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[0]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[1]</var-name>
+    				<var-value>employeeNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[1]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[2]</var-name>
+    				<var-value>ticketNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[2]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[3]</var-name>
+    				<var-value>creditCardNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[3]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+            </field>
+            <field property="creditCardNumber" depends="requiredif">
+                <arg0 key="pnr.defaultlookup.filter.field.CREDITCARDNO" />
+  				<var>
+    				<var-name>field[0]</var-name>
+    				<var-value>pnrLocator</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[0]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[1]</var-name>
+    				<var-value>ticketNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[1]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[2]</var-name>
+    				<var-value>frequentFlyerNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[2]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+  				<var>
+    				<var-name>field[3]</var-name>
+    				<var-value>employeeNumber</var-value>
+  				</var>
+  				<var>
+    				<var-name>fieldTest[3]</var-name>
+    				<var-value>NULL</var-value>
+  				</var>
+            </field>
+		</form>-->
+        <form name="lookupPassengerForm">
+            <field
+                property="passengerName"
+                depends="required,minlength,customName01">
+                    <arg0 key="pnr.passengerlookup.filter.field.PASSENGERNAME"/>
+                  	<var>
+            			<var-name>minlength</var-name>
+            			<var-value>3</var-value>
+          			</var>
+          			<var>
+             			<var-name>checkBoxProperty</var-name>
+             			<var-value>checkRange</var-value>
+          			</var>
+          			
+          			<msg key="pnr.passenger.minlength.PASSENGERNAME" name="minlength" />
+            </field>
+            <field
+                property="travelDate"
+                depends="required,dateCustom01">
+                    <arg0 key="pnr.passengerlookup.filter.field.TRAVELDATE"/>
+             </field>
+             </form>             
+		<!-- Passenger Lookup Form END -->
+
+		<!-- Flight Lookup Form START -->
+        <form name="lookupFlightForm">
+            <field
+                property="airlineCode"
+                depends="required">
+                    <arg0 key="pnr.flightlookup.filter.field.AIRLINECODE"/>
+            </field>
+            <field
+                property="flightNumber"
+                depends="required">
+                    <arg0 key="pnr.flightlookup.filter.field.FLIGHTNUMBER"/>
+            </field>
+            <field
+                property="travelDate"
+                depends="required,dateCustom01">
+                    <arg0 key="pnr.flightlookup.filter.field.TRAVELDATE"/>
+            </field>
+             <field
+                property="passengerName"
+                depends="minlength">
+                    <arg0 key="pnr.passengerlookup.filter.field.PASSENGERNAME"/>
+                  	<var>
+            			<var-name>minlength</var-name>
+            			<var-value>3</var-value>
+          			</var>
+          			<msg key="pnr.passenger.minlength.PASSENGERNAME" name="minlength" />
+            </field>
+            
+            </form>
+		<!-- Flight Lookup Form END -->
+
+		<!-- Origin-Destination Lookup Form START -->
+        <form name="lookupOrigDestForm">
+            <field
+                property="origin"
+                depends="required">
+                    <arg0 key="pnr.origdestlookup.filter.field.ORIGIN"/>
+            </field>
+            <field
+                property="destination"
+                depends="required">
+                    <arg0 key="pnr.origdestlookup.filter.field.DESTINATION"/>
+            </field>
+            <field
+                property="travelDate"
+                depends="required,dateCustom01">
+                    <arg0 key="pnr.origdestlookup.filter.field.TRAVELDATE"/>
+             </field>
+             <field
+                property="passengerName"
+                depends="minlength">
+                    <arg0 key="pnr.passengerlookup.filter.field.PASSENGERNAME"/>
+                  	<var>
+            			<var-name>minlength</var-name>
+            			<var-value>3</var-value>
+          			</var>
+          			<msg key="pnr.passenger.minlength.PASSENGERNAME" name="minlength" />
+            </field>
+             </form>
+		<!-- Origin-Destination Lookup Form END -->
+		
+
+    </formset>
+
+
+    <!-- An example formset for another locale
+    <formset language="fr">
+
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^[0-9a-zA-Z]*$</constant-value>
+        </constant>
+
+   </formset>
+   -->
+
+</form-validation>

@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\common\advisorymessage\v2
+2
+3
+18:AdvisoryMessageType.java|1|15b7c6152ab|10ab|c2d7c7bd|6523f6c20f1611e7968600306e4b3e41|0
+12:ObjectFactory.java|1|15b7c6152f8|7cf|1e208cbb|6736a7680f1611e796a100306e4b3e41|0
+11:package-info.java|1|15b7c61534d|f9|24b74e77|699503b90f1611e796a500306e4b3e41|0

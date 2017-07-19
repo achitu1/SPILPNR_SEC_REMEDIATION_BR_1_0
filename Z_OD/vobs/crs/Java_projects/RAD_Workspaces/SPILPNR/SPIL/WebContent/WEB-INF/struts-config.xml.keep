@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+                               "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<!-- Data Sources -->
+	<data-sources>
+	</data-sources>
+
+	<!-- Form Beans -->
+	<form-beans>
+		<!--      SPLJ Configuration -->
+		<form-bean name="flightInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_FlightInquiryForm" />
+		<form-bean name="passengerInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_PassengerInquiryForm" />
+		<form-bean name="frequentFlierInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_FrequentFlierInquiryForm" />
+		<form-bean name="otherInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_OtherInquiryForm" />
+		<form-bean name="waitlistInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_WaitlistInquiryForm" />
+		<form-bean name="ssrInquiryForm" type="com.delta.SPLJ.forms.SPLJ001_SsrInquiryForm" />
+		<form-bean name="loginForm" type="com.delta.SPLJ.forms.LoginForm" />
+
+		<form-bean name="helpCodeForm" type="com.delta.SPLJ.forms.SPILHelpCodeForm" />
+		<form-bean name="pnrHelpCodeForm" type="com.delta.PNRJ.forms.PNRHelpCodeForm" />
+		<!-- PNRJ Configuration -->
+		<!--  On Demand begin -->
+				<form-bean name="OnDemandSsrInquiryForm" type="com.delta.SPLJ.forms.SPLJ001_OnDemandSsrInquiryForm" />
+		
+				<form-bean name="OnDemandWaitlistInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_OnDemandWaitlistInquiryForm" />
+		
+		<form-bean name="OnDemandOtherInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_OnDemandOtherInquiryForm" />
+			
+		<form-bean name="OnDemandFrequentFlierInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_OnDemandFrequentFlierInquiryForm" />
+			
+		<form-bean name="flightInquiryFormOnDmd"
+			type="com.delta.SPLJ.forms.SPLJ001_FlightInquiryFormOnDmd" />
+			
+			<form-bean name="OnDemandPassengerInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_OnDemandPassengerInquiryForm" />
+			
+							<!-- On Demand end -->
+
+		<form-bean name="clerkBean" type="com.delta.PNRJ.forms.PNRJ002_ClerkBean">
+			<display-name>Clerk Mainenance</display-name>
+			<description>Clerk Mainenance</description>
+		</form-bean>
+		<!--<form-bean name="loginForm" type="com.delta.PNRJ.forms.LoginForm" />-->
+		<form-bean name="processBean" type="com.delta.PNRJ.forms.PRAJ007_ProcessBean">
+			<display-name>Work Group Review Setup</display-name>
+		</form-bean>
+		<form-bean name="lookupDefaultForm"
+			type="com.delta.PNRJ.forms.PNRJ002_lookupDefaultForm" />
+		<form-bean name="lookupPassengerForm"
+			type="com.delta.PNRJ.forms.PNRJ002_lookupPassengerForm" />
+		<form-bean name="lookupFlightForm"
+			type="com.delta.PNRJ.forms.PNRJ002_lookupFlightForm" />
+		<form-bean name="lookupOrigDestForm"
+			type="com.delta.PNRJ.forms.PNRJ002_lookupOrigDestForm" />
+			
+			
+		<form-bean name="onDemandFlightInquiryForm"
+			type="com.delta.SPLJ.forms.SPLJ001_OnDemandFlightInquiryForm" />
+			
+					<form-bean name="OnDemandlookupDefaultForm"
+			type="com.delta.PNRJ.forms.PNRJ002_OnDemandlookupDefaultForm" />
+			
+<form-bean name="OnDemandRequestForm"
+			type="com.delta.SPLJ.onDemand.forms.OnDemandRequestForm" />
+	</form-beans>
+
+	<!-- Global Exceptions -->
+	<global-exceptions>
+	</global-exceptions>
+
+	<!-- Global Forwards -->
+	<global-forwards>
+		<forward name="failure" path="/WEB-INF/tiles/error.jsp" /> 
+        <forward name="login" path="login.do" redirect="true"  contextRelative="true"/> 
+        <forward name="invalidSession" path="/WEB-INF/tiles/error.jsp" />
+	</global-forwards>
+
+	<!-- Action Mappings -->
+	<action-mappings>
+		<action path="/test" type="com.delta.SPLJ.actions.TestAction">
+			<forward name="success" path="SPLJNav.default" />
+		</action>
+
+		<action path="/login" type="com.delta.SPLJ.actions.LoginAction"
+			name="loginForm" validate="true" scope="request">
+			<forward name="success" path="/appSelectionHist.jsp"/>
+			<forward name="failure" path="/invalidLogin.jsp" />
+			<forward name="successOD" path="/appSelection.jsp" />
+		</action>
+
+		<action path="/SPLJ/LookupSPLJCodes" type="com.delta.SPLJ.actions.LookupSPILCodesAction"
+			name="helpCodeForm" validate="false" scope="request">
+			<forward name="success" path="SPILHelpCodes" />
+		</action>
+		<action path="/SPLJ/LookupDeltaSPLJCodes" forward="/WEB-INF/tiles/SPLJ/DeltaSpilCodes.jsp" />
+
+		<action path="/SPLJ/FlightInquiry" type="com.delta.SPLJ.actions.SPLJ001_FlightInquiryAction"
+			name="flightInquiryForm" input="SPLJ001.flight" validate="false"
+			scope="request">
+			<forward name="success" path="SPLJ001.flight" />
+		</action>
+		<action path="/SPLJ/FlightInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_FlightInquirySubmitAction" name="flightInquiryForm"
+			scope="request" validate="true" input="SPLJ001.flight">
+			<forward name="success" path="/SPLJ/FlightInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_flightInquiryDownload.jsp" />
+		</action>
+		
+			<!--  On Demand Begin -->
+			
+					<action path="/PNRJ/OnDemandLookupDefault" type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupDefaultAction"
+			name="OnDemandlookupDefaultForm" scope="request" validate="false">
+		 	<forward name="success" path="PNRJ002.OnDemanddefault" />
+		</action>
+
+		<action path="/PNRJ/OnDemandLookupDefaultSubmit"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupDefaultSubmitAction" name="OnDemandlookupDefaultForm"
+			scope="session" validate="true" input="PNRJ002.OnDemanddefault">
+			<forward name="success" path="PNRJ002.OnDemanddefault" />
+		</action>
+		
+		<action path="/SPLJ/FlightInquiryOnDmd" type="com.delta.SPLJ.actions.SPLJ001_FlightInquiryActionOnDmd"
+			name="flightInquiryFormOnDmd" input="SPLJ001.flight" validate="false"
+			scope="request">
+			<forward name="success" path="SPLJ001.flight" />
+		</action>
+		<action path="/SPLJ/FlightInquirySubmitOnDmd"
+			type="com.delta.SPLJ.actions.SPLJ001_FlightInquirySubmitActionOnDmd" name="flightInquiryFormOnDmd"
+			scope="request" validate="true" input="SPLJ001.flight">
+			<forward name="success" path="/SPLJ/FlightInquiryOnDmd.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_flightInquiryDownload.jsp" />
+		</action>
+		
+		<action path="/PNRJ/App" type="com.delta.PNRJ.actions.OnDemandRedirectApp">
+			<forward name="On_Demand_PNRJ002_init" path="/PNRJ/OnDemandLookupDefault.do" />
+			<forward name="PNRJ007_init" path="/PNRJ/PNRJ007_init.do" />
+		</action>
+		<!-- Change 7/12/16 -->
+		<!--  -->
+		<action path="/SPLJ/OnDemandRequestAction" type="com.delta.SPLJ.onDemand.actions.OnDemandRequestAction"
+			name="OnDemandRequestForm" input="SPLJ001.onDemandflight" validate="false"
+			scope="request">
+			<forward name="success" path="SPLJ001.onDemandflight" />
+		</action> 
+		
+		<!--  -->
+	<action path="/SPLJ/OnDemandFlightInquiry" type="com.delta.SPLJ.actions.SPLJ001_OnDemandFlightInquiryAction"
+			name="onDemandFlightInquiryForm" input="SPLJ001.onDemandflight" validate="false"
+			scope="request">
+			<forward name="success" path="SPLJ001.onDemandflight" />
+			<!-- <forward name="success" path="SPLJ001.onDemandflight2" /> -->
+		</action>
+	
+			<!-- Change end 7/12/16 -->
+		<action path="/SPLJ/OnDemandFlightInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandFlightInquirySubmitAction" name="onDemandFlightInquiryForm"
+			scope="request" validate="true" input="SPLJ001.onDemandflight2">
+			<!-- scope="request" validate="true" input="SPLJ001.onDemandflight"> -->
+			<forward name="success" path="/SPLJ/OnDemandFlightInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_onDemandFlightInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/OnDemandPassengerInquiry"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandPassengerInquiryAction" name="OnDemandPassengerInquiryForm"
+			input="SPLJ001.OnDemandpassenger" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.OnDemandpassenger" />
+		</action>
+		<action path="/SPLJ/OnDemandPassengerInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandPassengerInquirySubmitAction"
+			name="OnDemandPassengerInquiryForm" scope="request" validate="true"
+			input="SPLJ001.OnDemandpassenger">
+			<forward name="success" path="/SPLJ/OnDemandPassengerInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_OnDemandPassengerInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/OnDemandFrequentFlierInquiry"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandFrequentFlierInquiryAction" name="OnDemandFrequentFlierInquiryForm"
+			input="SPLJ001.OnDemandFrequentFlier" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.OnDemandFrequentFlier" />
+		</action>
+		<action path="/SPLJ/OnDemandFrequentFlierInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandFrequentFlierInquirySubmitAction"
+			name="OnDemandFrequentFlierInquiryForm" scope="request" validate="true"
+			input="SPLJ001.OnDemandFrequentFlier">
+			<forward name="success" path="/SPLJ/OnDemandFrequentFlierInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_OnDemandFrequentFlierInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/OnDemandOtherInquiry" type="com.delta.SPLJ.actions.SPLJ001_OnDemandOtherInquiryAction"
+			name="OnDemandOtherInquiryForm" input="SPLJ001.OnDemandOther" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.OnDemandOther" />
+		</action>
+		<action path="/SPLJ/OnDemandOtherInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandOtherInquirySubmitAction" name="OnDemandOtherInquiryForm"
+			scope="request" validate="false" input="SPLJ001.OnDemandOther">
+			<forward name="success" path="/SPLJ/OnDemandOtherInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_OnDemandOtherInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/OnDemandWaitlistInquiry"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandWaitlistInquiryAction" name="OnDemandWaitlistInquiryForm"
+			input="SPLJ001.OnDemandWaitlist" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.OnDemandWaitlist" />
+		</action>
+		<action path="/SPLJ/OnDemandWaitlistInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandWaitlistInquirySubmitAction" name="OnDemandWaitlistInquiryForm"
+			scope="request" validate="true" input="SPLJ001.OnDemandWaitlist">
+			<forward name="success" path="/SPLJ/OnDemandWaitlistInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_OnDemandWaitlistInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/OnDemandPassengerList" type="com.delta.SPLJ.actions.OnDemandSPLPassengerLookupAction"
+			name="OnDemandWaitlistInquiryForm" scope="request" validate="false"
+			input="SPLJ001.OnDemandWaitlist">
+			<forward name="success" path="OnDemandSPLPassenger" />
+		</action>
+		
+		<!-- SSR Inquiry -->
+		<action path="/SPLJ/OnDemandSsrInquiry" type="com.delta.SPLJ.actions.SPLJ001_OnDemandSsrInquiryAction"
+			name="OnDemandSsrInquiryForm" input="SPLJ001.OnDemandSsr" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.OnDemandSsr" />
+		</action>
+
+		<action path="/SPLJ/OnDemandSsrInquiryList"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandSsrInquirySearchAction" name="OnDemandSsrInquiryForm"
+			input="SPLJ001.OnDemandSsr" validate="true" scope="request">
+			<forward name="success" path="SPLJ001.OnDemandSsrList" />
+			<forward name="noRecords" path="SPLJ001.OnDemandSsrNoRecords" />
+			<forward name="excel" path="WEB-INF/tiles/SPLJ/SPLJ001_OnDemandSsrInquiryDownload.jsp" />
+		</action>
+
+		<action path="/SPLJ/OnDemandSsrInquiryRowSelected"
+			type="com.delta.SPLJ.actions.SPLJ001_OnDemandSsrInquiryRowSelectedAction" name="OnDemandSsrInquiryForm"
+			input="SPLJ001.OnDemandSsrRowSelected" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.OnDemandSsrRowSelected" />
+		</action>
+
+		<action path="/SPLJ/OnDemandSsrInquiryNoRecords" type="com.delta.SPLJ.actions.SPLJ001_OnDemandSsrInquiryAction"
+			name="OnDemandSsrInquiryForm" input="SPLJ001.OnDemandSsrNoRecords" validate="false"
+			scope="request">
+			<forward name="success" path="SPLJ001.OnDemandSsrNoRecords" />
+		</action>
+		<!--  on demand PNR changes -->
+	
+
+		
+		<!-- On Demand End-->
+		
+		<action path="/SPLJ/PassengerInquiry"
+			type="com.delta.SPLJ.actions.SPLJ001_PassengerInquiryAction" name="passengerInquiryForm"
+			input="SPLJ001.passenger" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.passenger" />
+		</action>
+		<action path="/SPLJ/PassengerInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_PassengerInquirySubmitAction"
+			name="passengerInquiryForm" scope="request" validate="true"
+			input="SPLJ001.passenger">
+			<forward name="success" path="/SPLJ/PassengerInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_passengerInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/FrequentFlierInquiry"
+			type="com.delta.SPLJ.actions.SPLJ001_FrequentFlierInquiryAction" name="frequentFlierInquiryForm"
+			input="SPLJ001.frequentFlier" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.frequentFlier" />
+		</action>
+		<action path="/SPLJ/FrequentFlierInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_FrequentFlierInquirySubmitAction"
+			name="frequentFlierInquiryForm" scope="request" validate="true"
+			input="SPLJ001.frequentFlier">
+			<forward name="success" path="/SPLJ/FrequentFlierInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_frequentFlierInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/OtherInquiry" type="com.delta.SPLJ.actions.SPLJ001_OtherInquiryAction"
+			name="otherInquiryForm" input="SPLJ001.other" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.other" />
+		</action>
+		<action path="/SPLJ/OtherInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_OtherInquirySubmitAction" name="otherInquiryForm"
+			scope="request" validate="false" input="SPLJ001.other">
+			<forward name="success" path="/SPLJ/OtherInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_otherInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/WaitlistInquiry"
+			type="com.delta.SPLJ.actions.SPLJ001_WaitlistInquiryAction" name="waitlistInquiryForm"
+			input="SPLJ001.waitlist" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.waitlist" />
+		</action>
+		<action path="/SPLJ/WaitlistInquirySubmit"
+			type="com.delta.SPLJ.actions.SPLJ001_WaitlistInquirySubmitAction" name="waitlistInquiryForm"
+			scope="request" validate="true" input="SPLJ001.waitlist">
+			<forward name="success" path="/SPLJ/WaitlistInquiry.do" />
+			<forward name="excel"
+				path="WEB-INF/tiles/SPLJ/SPLJ001_waitlistInquiryDownload.jsp" />
+		</action>
+		<action path="/SPLJ/PassengerList" type="com.delta.SPLJ.actions.SPLPassengerLookupAction"
+			name="waitlistInquiryForm" scope="request" validate="false"
+			input="SPLJ001.waitlist">
+			<forward name="success" path="SPLPassenger" />
+		</action>
+
+		<!-- SSR Inquiry -->
+		<action path="/SPLJ/SsrInquiry" type="com.delta.SPLJ.actions.SPLJ001_SsrInquiryAction"
+			name="ssrInquiryForm" input="SPLJ001.ssr" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.ssr" />
+		</action>
+
+		<action path="/SPLJ/SsrInquiryList"
+			type="com.delta.SPLJ.actions.SPLJ001_SsrInquirySearchAction" name="ssrInquiryForm"
+			input="SPLJ001.ssr" validate="true" scope="request">
+			<forward name="success" path="SPLJ001.ssrList" />
+			<forward name="noRecords" path="SPLJ001.ssrNoRecords" />
+			<forward name="excel" path="WEB-INF/tiles/SPLJ/SPLJ001_ssrInquiryDownload.jsp" />
+		</action>
+
+		<action path="/SPLJ/SsrInquiryRowSelected"
+			type="com.delta.SPLJ.actions.SPLJ001_SsrInquiryRowSelectedAction" name="ssrInquiryForm"
+			input="SPLJ001.ssrRowSelected" validate="false" scope="request">
+			<forward name="success" path="SPLJ001.ssrRowSelected" />
+		</action>
+
+		<action path="/SPLJ/SsrInquiryNoRecords" type="com.delta.SPLJ.actions.SPLJ001_SsrInquiryAction"
+			name="ssrInquiryForm" input="SPLJ001.ssrNoRecords" validate="false"
+			scope="request">
+			<forward name="success" path="SPLJ001.ssrNoRecords" />
+		</action>
+
+		<action name="clerkBean" path="/PNRJ/PNRJ002_processClerk" scope="session"
+			type="com.delta.PNRJ.actions.PNRJ002_ProcessClerkAction" input="PRAJ002.index"
+			parameter="submitButton">
+			<forward name="reset" path="PNRJ002.index" />
+			<forward name="success" path="PNRJ002.index" />
+		</action>
+		<action name="clerkBean" path="/PNRJ/PNRJ002_retrievePnr" scope="session"
+			type="com.delta.PNRJ.actions.PNRJ002_RetrievePnrAction" parameter="submitButton"
+			validate="false" input="PRAJ002.index">
+			<forward name="success" path="PNRJ002.index" />
+		</action>
+
+		<action path="/PNRJ/PRAJ002_init" name="clerkBean" validate="false"
+			forward="PRAJ002.index" />
+			
+		<action path="/PNRJ/PNRJ007_init" type="com.delta.PNRJ.actions.PNRJ007_InitialAction"
+			parameter="submitButton" name="processBean" scope="session">
+			<forward name="success" path="PNRJ007.index" />
+		</action>
+		<action path="/PNRJ/PRAJ007_processFlow" type="com.delta.PNRJ.actions.PNRJ007_ProcessFlow"
+			input="PRAJ007.index" parameter="submitButton" name="processBean"
+			scope="session">
+			<forward name="success" path="PNRJ007.index" />
+		</action>
+
+		<action path="/PNRJ/redirectApp" type="com.delta.PNRJ.actions.redirectApp">
+			<forward name="PNRJ002_init" path="/PNRJ/LookupDefault.do" />
+			<forward name="PNRJ007_init" path="/PNRJ/PNRJ007_init.do" />
+		</action>
+		<action path="/PNRJ/LookupDefault" type="com.delta.PNRJ.actions.PNRJ002_LookupDefaultAction"
+			name="lookupDefaultForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.default" />
+		</action>
+		<action path="/PNRJ/LookupPNRCodes" forward="/WEB-INF/tiles/PNRJ/pnrCodes_popup.jsp" />
+			    
+		<action path="/PNRJ/LookupDeltaPNRCodes" type="com.delta.PNRJ.actions.LookupDeltaPNRCodesAction"
+			name="pnrHelpCodeForm" validate="false" scope="request">
+			<forward name="success" path="WEB-INF/tiles/PNRJ/DeltaPNRCodes.jsp" />
+		</action>
+		
+		<action path="/PNRJ/LookupDefaultSubmit"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupDefaultSubmitAction" name="lookupDefaultForm"
+			scope="session" validate="true" input="PNRJ002.default">
+			<forward name="success" path="PNRJ002.default" />
+		</action>
+		<action path="/PNRJ/LookupSortByDefault" type="com.delta.PNRJ.actions.PNRJ002_LookupSortAction"
+			name="lookupDefaultForm" scope="session" validate="true" input="PNRJ002.default">
+			<forward name="success" path="PNRJ002.default" />
+		</action>
+		
+		<!-- On Demand changes begin -->
+		
+		<action path="/PNRJ/OnDemandLookupSortByDefault" type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupSortAction"
+			name="OnDemandlookupDefaultForm" scope="session" validate="true" input="PNRJ002.OnDemanddefault">
+			<forward name="success" path="PNRJ002.OnDemanddefault" />
+		</action>
+		<!-- 05/05/2016 on demand -->
+		<action path="/PNRJ/OnDemandLookupSortByPassenger" type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupSortAction"
+			name="OnDemandlookupPassengerForm" scope="session" validate="true"
+			input="PNRJ002.passenger">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupSortByOrigDest" type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupSortAction"
+			name="OnDemandlookupOrigDestForm" scope="session" validate="true" input="PNRJ002.origDest">
+			<forward name="success" path="PNRJ002.origDest" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupSortByFlight" type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupSortAction"
+			name="OnDemandlookupFlightForm" scope="session" validate="true" input="PNRJ002.flight">
+			<forward name="success" path="PNRJ002.flight" />
+		</action>
+		
+		<action path="/PNRJ/OnDemandLookupPassenger"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupPassengerAction" name="OnDemandlookupPassengerForm"
+			scope="request" validate="false">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupPassengerSubmit"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupPassengerSubmitAction" name="OnDemandlookupPassengerForm"
+			scope="session" validate="true" input="PNRJ002.passenger">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupPassengerRedisplay"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupPassengerRedisplayAction"
+			name="OnDemandlookupPassengerForm" scope="session" validate="true"
+			input="PNRJ002.passenger">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupFlight" type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupFlightAction"
+			name="OnDemandlookupFlightForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.flight" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupFlightSubmit"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupFlightSubmitAction" name="OnDemandlookupFlightForm"
+			scope="session" validate="true" input="PNRJ002.flight">
+			<forward name="success" path="PNRJ002.flight" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupOrigDest"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupOrigDestAction" name="OnDemandlookupOrigDestForm"
+			scope="request" validate="false">
+			<forward name="success" path="PNRJ002.origDest" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupOrigDestSubmit"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupOrigDestSubmitAction" name="OnDemandlookupOrigDestForm"
+			scope="session" validate="true" input="PNRJ002.origDest">
+			<forward name="success" path="PNRJ002.origDest" />
+		</action>
+
+		<action path="/PNRJ/OnDemandLookupDefaultDetailShow"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupDefaultDetailShowAction"
+			name="OnDemandlookupDefaultForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.OnDemanddefault" />
+		</action>
+		
+		<action path="/PNRJ/OnDemandLookupPassengerDetailShow"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupPassengerDetailShowAction"
+			name="OnDemandlookupPassengerForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/LookupFlightDetailShow"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupFlightDetailShowAction"
+			name="OnDemandlookupFlightForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.flight" />
+		</action>
+		<action path="/PNRJ/OnDemandLookupOrigDestDetailShow"
+			type="com.delta.PNRJ.actions.PNRJ002_OnDemandLookupOrigDestDetailShowAction"
+			name="OnDemandlookupOrigDestForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.origDest" />
+		</action>
+		
+		<!-- On demand changes end -->
+		<action path="/PNRJ/LookupSortByPassenger" type="com.delta.PNRJ.actions.PNRJ002_LookupSortAction"
+			name="lookupPassengerForm" scope="session" validate="true"
+			input="PNRJ002.passenger">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/LookupSortByOrigDest" type="com.delta.PNRJ.actions.PNRJ002_LookupSortAction"
+			name="lookupOrigDestForm" scope="session" validate="true" input="PNRJ002.origDest">
+			<forward name="success" path="PNRJ002.origDest" />
+		</action>
+		<action path="/PNRJ/LookupSortByFlight" type="com.delta.PNRJ.actions.PNRJ002_LookupSortAction"
+			name="lookupFlightForm" scope="session" validate="true" input="PNRJ002.flight">
+			<forward name="success" path="PNRJ002.flight" />
+		</action>
+		<action path="/PNRJ/LookupPassenger"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupPassengerAction" name="lookupPassengerForm"
+			scope="request" validate="false">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/LookupPassengerSubmit"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupPassengerSubmitAction" name="lookupPassengerForm"
+			scope="session" validate="true" input="PNRJ002.passenger">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/LookupPassengerRedisplay"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupPassengerRedisplayAction"
+			name="lookupPassengerForm" scope="session" validate="true"
+			input="PNRJ002.passenger">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/LookupFlight" type="com.delta.PNRJ.actions.PNRJ002_LookupFlightAction"
+			name="lookupFlightForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.flight" />
+		</action>
+		<action path="/PNRJ/LookupFlightSubmit"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupFlightSubmitAction" name="lookupFlightForm"
+			scope="session" validate="true" input="PNRJ002.flight">
+			<forward name="success" path="PNRJ002.flight" />
+		</action>
+		<action path="/PNRJ/LookupOrigDest"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupOrigDestAction" name="lookupOrigDestForm"
+			scope="request" validate="false">
+			<forward name="success" path="PNRJ002.origDest" />
+		</action>
+		<action path="/PNRJ/LookupOrigDestSubmit"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupOrigDestSubmitAction" name="lookupOrigDestForm"
+			scope="session" validate="true" input="PNRJ002.origDest">
+			<forward name="success" path="PNRJ002.origDest" />
+		</action>
+		<action path="/PNRJ/LookupDefaultDetailShow"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupDefaultDetailShowAction"
+			name="lookupDefaultForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.default" />
+		</action>
+
+		<action path="/PNRJ/LookupPassengerDetailShow"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupPassengerDetailShowAction"
+			name="lookupPassengerForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.passenger" />
+		</action>
+		<action path="/PNRJ/LookupFlightDetailShow"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupFlightDetailShowAction"
+			name="lookupFlightForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.flight" />
+		</action>
+		<action path="/PNRJ/LookupOrigDestDetailShow"
+			type="com.delta.PNRJ.actions.PNRJ002_LookupOrigDestDetailShowAction"
+			name="lookupOrigDestForm" scope="request" validate="false">
+			<forward name="success" path="PNRJ002.origDest" />
+		</action>
+
+
+
+	</action-mappings>
+
+      
+
+	<!-- Message Resources -->
+	<message-resources parameter="com.delta.resources.ApplicationResources" />
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/SPLJ-tiles.xml,/WEB-INF/PNRJ-tiles.xml" />
+		<set-property property="definitions-debug" value="2" />
+		<set-property property="definitions-parser-details"
+			value="2" />
+		<set-property property="definitions-parser-validate"
+			value="true" />
+	</plug-in>
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+	<!-- Spring Struts plugin -->  	
+	
+  	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+  <set-property property="contextConfigLocation"
+           value="/WEB-INF/applicationContext.xml"/>
+</plug-in>
+
+</struts-config>

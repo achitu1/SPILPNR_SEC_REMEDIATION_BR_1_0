@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>SPIL</display-name>
+	<!-- On Demand Changes begin 7/6/16 -->
+	    <!-- added- Spring Bean-->
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/applicationContext.xml</param-value>
+</context-param>
+
+<listener>
+   <listener-class>
+        org.springframework.web.context.ContextLoaderListener
+   </listener-class>
+</listener> 
+
+<!-- added Spring Bean ends-->
+	<filter>
+		<description>
+		</description>
+		<display-name>UserCheckFilter</display-name>
+		<filter-name>UserCheckFilter</filter-name>
+		<filter-class>com.delta.SPLJ.helper.UserCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UserCheckFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UserCheckFilter</filter-name>
+		<url-pattern>appSelection.jsp</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>action</display-name>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<description>
+			</description>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<description>
+			</description>
+			<param-name>debug</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<description>
+			</description>
+			<param-name>detail</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<description>
+			</description>
+			<param-name>validate</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<description>
+		Login</description>
+		<display-name>Login</display-name>
+		<servlet-name>Login</servlet-name>
+		<jsp-file>/Login.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>CreditCardEncryptorServlet_1</display-name>
+		<servlet-name>CreditCardEncryptorServlet_1</servlet-name>
+		<servlet-class>com.delta.jobs.CreditCardEncryptorServlet_1</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>CreditCardEncryptorServlet_2</display-name>
+		<servlet-name>CreditCardEncryptorServlet_2</servlet-name>
+		<servlet-class>com.delta.jobs.CreditCardEncryptorServlet_2</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>LongPNRRetriever</display-name>
+		<servlet-name>LongPNRRetriever</servlet-name>
+		<servlet-class>com.delta.jobs.LongPNRRetriever</servlet-class>
+	</servlet>
+	<!-- On Demand Begins -->
+	<servlet>
+		<description>
+		</description>
+		<display-name>OnDemandLongPNRRetriever</display-name>
+		<servlet-name>OnDemandLongPNRRetriever</servlet-name>
+		<servlet-class>com.delta.jobs.OnDemandLongPNRRetriever</servlet-class>
+	</servlet>
+	<!-- On Demand ends -->
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreditCardEncryptorServlet_1</servlet-name>
+		<url-pattern>/CreditCardEncryptorServlet_1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreditCardEncryptorServlet_2</servlet-name>
+		<url-pattern>/CreditCardEncryptorServlet_2</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LongPNRRetriever</servlet-name>
+		<url-pattern>/LongPNRRetriever</url-pattern>
+	</servlet-mapping>
+	<!-- on demand begins -->
+	<servlet-mapping>
+		<servlet-name>OnDemandLongPNRRetriever</servlet-name>
+		<url-pattern>/OnDemandLongPNRRetriever</url-pattern>
+	</servlet-mapping>
+	<!-- on demand changes ends -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>Login.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>401</error-code>
+		<location>/notAuthorised.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/notAuthorised.jsp</location>
+	</error-page>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-template.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-template.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-display.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-display.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	<security-constraint>
+		<display-name>authorizedUsers</display-name>
+		<web-resource-collection>
+			<web-resource-name>AllSPLJResourses</web-resource-name>
+			<url-pattern>/index.jsp</url-pattern>
+			<url-pattern>/login.do</url-pattern>
+			<url-pattern>/appSelection.jsp</url-pattern>
+			<url-pattern>/SPLJ/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>TRACE</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>
+			Authorizedusers</description>
+			<role-name>authorizedUsers</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<display-name>AllPNRUsers</display-name>
+		<web-resource-collection>
+			<web-resource-name>AllPNRResources</web-resource-name>
+			<url-pattern>/index.jsp</url-pattern>
+			<url-pattern>/login.do</url-pattern>
+			<url-pattern>/appSelection.jsp</url-pattern>
+			<url-pattern>/creditCardJob.jsp</url-pattern>
+			<url-pattern>/PNRJ/*</url-pattern>
+			<url-pattern>/LongPNRRetriever</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>
+			AllPNRUsers</description>
+			<role-name>queryonly</role-name>
+			<role-name>querycc</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/Login.jsp</form-login-page>
+			<form-error-page>/invalidLogin.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<description>
+		authorizedUsers</description>
+		<role-name>authorizedUsers</role-name>
+	</security-role>
+	<security-role>
+		<description>
+		queryonly</description>
+		<role-name>queryonly</role-name>
+	</security-role>
+	<security-role>
+		<description>
+		querycc</description>
+		<role-name>querycc</role-name>
+	</security-role>
+	<ejb-ref id="EjbRef_1288724405402">
+		<description>
+		</description>
+		<ejb-ref-name>ejb/SPLJ</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<home>com.delta.PRA.SPLJ.EJB.SPLJHome</home>
+		<remote>com.delta.PRA.SPLJ.EJB.SPLJ</remote>
+		<ejb-link>SPLJEJB.jar#SPLJ</ejb-link>
+	</ejb-ref>
+	<ejb-local-ref id="EJBLocalRef_1288724405402">
+		<description>
+		</description>
+		<ejb-ref-name>ejb/PRAJ</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>com.delta.PRA.PNRJ.EJB.PNRJLocalHome</local-home>
+		<local>com.delta.PRA.PNRJ.EJB.PNRJLocal</local>
+		<ejb-link>PNRJEJB.jar#PRAJ</ejb-link>
+	</ejb-local-ref>
+
+	<!-- On Demand Changes end 7/6/16 -->
+</web-app>

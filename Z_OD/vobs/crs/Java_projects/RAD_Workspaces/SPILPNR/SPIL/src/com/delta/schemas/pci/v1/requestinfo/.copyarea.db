@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\pci\v1\requestinfo
+2
+3
+13:PciRequestInfo.java|1|15b7c614f1b|3476|48a063ec|a991fa10711211e099a8000180ed7ddd|0
+12:ObjectFactory.java|1|15b7c614e66|500|439388bd|a991f9f0711211e099a8000180ed7ddd|0
+11:package-info.java|1|15b7c614ebe|f2|e0de4913|a991fa00711211e099a8000180ed7ddd|0

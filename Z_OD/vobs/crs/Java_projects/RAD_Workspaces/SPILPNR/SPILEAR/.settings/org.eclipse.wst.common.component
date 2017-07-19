@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SPILEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="SPLJEJB.jar" deploy-path="/" handle="module:/resource/SPLJEJB/SPLJEJB">
+            <dependent-object>EjbModule_1288724252365</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="PNRJEJB.jar" deploy-path="/" handle="module:/resource/PNRJEJB/PNRJEJB">
+            <dependent-object>EjbModule_1288724252349</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SPIL.war" deploy-path="/" handle="module:/resource/SPIL/SPIL">
+            <dependent-object>WebModule_1288722178149</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SPLODMDB.jar" deploy-path="/" handle="module:/resource/SPLODMDB/SPLODMDB">
+            <dependent-object>EjbModule_1498067774369</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

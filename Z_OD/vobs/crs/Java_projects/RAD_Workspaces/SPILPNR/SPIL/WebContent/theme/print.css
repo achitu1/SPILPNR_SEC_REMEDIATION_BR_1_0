@@ -1,0 +1,58 @@
+body{
+	text-align:center;
+	font-family:Arial;
+	font-size: 10pt;
+	
+}
+
+.printstart
+{
+	page-break-after: always;
+	height: auto;
+	page: auto
+}
+
+.printstop
+{
+	height: auto;
+	page: auto
+}
+
+.printText {
+	display: none;
+}
+
+
+@page port {size: portrait;}
+@page land {size: landscape;}
+
+.pgPortrait 
+{
+   page: port;
+}
+
+.pgLandscape 
+{
+   page: land ;
+}
+
+.printable
+{
+    FONT-SIZE: 8pt;
+    MARGIN: 0px;
+    FONT-FAMILY: arial, verdana, sans-serif;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.printable_header
+{
+    FONT-SIZE: 9pt;
+    MARGIN: 0px;
+    FONT-FAMILY: arial, verdana, sans-serif;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.printText {
+	display: block;
+}

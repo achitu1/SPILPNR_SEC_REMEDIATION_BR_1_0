@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:ejbbnd="ejbbnd.xmi" xmi:id="EJBJarBinding_1074113254081">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1074113254081" jndiName="ejb/com/nwa/PRA/PRAJ/EJB/PRAJHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#MGTJ"/>
+    <ejbRefBindings xmi:id="EjbRefBinding_1079466411036" jndiName="ejb/com/nwa/PRA/AuditorMaint/EJB/AuditorMaintHome">
+      <bindingEjbRef href="META-INF/ejb-jar.xml#EjbRef_1079466411036"/>
+    </ejbRefBindings>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1084809757263" jndiName="ejb/com/nwa/PRA/PNRJ/EJB/PNRJHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#PRAJ"/>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

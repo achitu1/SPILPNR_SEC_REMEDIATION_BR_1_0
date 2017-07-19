@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\pci\v1\pcipan
+2
+3
+b:PciPan.java|1|15b7c614afb|26ad|2ffbd013|a901f974711211e099a8000180ed7ddd|0
+12:ObjectFactory.java|1|15b7c6149fc|4d1|a7374b7|a901f954711211e099a8000180ed7ddd|0
+11:package-info.java|1|15b7c614a7c|12c|fb055cee|a901f964711211e099a8000180ed7ddd|0

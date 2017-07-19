@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPILEAR\lib
+2
+3
+f:log4j-1.2.8.jar|1|15b7c627080|5619c|17cba762|31c21880711511e099a8000180ed7ddd|0
+d:PraCommon.jar|1|15b7c627112|17e83|fbf60716|31c21890711511e099a8000180ed7ddd|0
+16:jakarta-regexp-1.3.jar|1|15b7c626fe3|6355|e8eed0ed|31321870711511e099a8000180ed7ddd|0

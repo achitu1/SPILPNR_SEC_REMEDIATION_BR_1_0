@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+<ejb-jar id="ejb-jar_ID">
+	<display-name>PNRJEJB</display-name>
+	<enterprise-beans>
+		<session id="PRAJ">
+			<ejb-name>PRAJ</ejb-name>
+			<home>com.delta.PRA.PNRJ.EJB.PNRJHome</home>
+			<remote>com.delta.PRA.PNRJ.EJB.PNRJ</remote>
+			<local-home>com.delta.PRA.PNRJ.EJB.PNRJLocalHome</local-home>
+			<local>com.delta.PRA.PNRJ.EJB.PNRJLocal</local>
+			<ejb-class>com.delta.PRA.PNRJ.EJB.PNRJBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+		</session>
+	</enterprise-beans>
+</ejb-jar>

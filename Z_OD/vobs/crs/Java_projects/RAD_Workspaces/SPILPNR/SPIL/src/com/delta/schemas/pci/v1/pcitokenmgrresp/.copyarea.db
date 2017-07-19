@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\pci\v1\pcitokenmgrresp
+2
+3
+12:ObjectFactory.java|1|15b7c614d16|518|368926d|a901f9bc711211e099a8000180ed7ddd|0
+16:PciTokMgrResponse.java|1|15b7c614dbe|331d|15a025b8|a901f9dc711211e099a8000180ed7ddd|0
+11:package-info.java|1|15b7c614d69|13e|39a464b2|a901f9cc711211e099a8000180ed7ddd|0

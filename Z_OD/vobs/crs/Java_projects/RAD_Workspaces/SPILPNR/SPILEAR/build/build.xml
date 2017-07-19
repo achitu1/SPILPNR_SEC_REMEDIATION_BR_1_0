@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="spilear" default="ear_build" basedir=".">
+	<description>
+        PNR ejb module
+    </description>	
+	
+	<property name="app.name" value="SPILEAR"/>
+	<property name="build.home" location="../bin"/>
+	<property name="lib.home" location="../lib"/>
+	<property name="META_INF.home" location="../META-INF"/>
+	<property name="dist.home" location="../dist"/>
+	<property name="deploy.home" value="../pkg/deploy"/>
+	<property file="build.properties"/>
+	<property file="spljejb.home" value="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPLJEJB/dist"/>
+	<property file="pnrjejb.home" value="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/PNRJEJB/dist"/>
+
+	<path id="compile.classpath">
+		<!-- Include all JAR files on which your application will depend.  -->
+		<pathelement location="${jakarta-regexp}"/>
+ 		<pathelement location="${log4j}"/>
+		<pathelement location="${pracommon}"/>
+		<pathelement location="${spljejb.home}"/>
+		<pathelement location="${pnrjejb.home}"/>
+	</path>
+	
+	<target name="init" depends="build_subprojects" >
+		<echo message=":: JAVA_HOME=${java.home}" />
+		<pathconvert pathsep="${line.separator}" property="echo.classpath" refid="compile.classpath">
+		</pathconvert>
+		<!-- Write the result to the console -->
+		<echo message=":: CLASSPATH=${echo.classpath}" />
+
+		<mkdir dir="${dist.home}" />
+	</target>
+	
+	<target name="compile" depends="init" description="compile the source ">
+		
+		<!-- trigger other build files-->
+		
+
+		
+		<mkdir dir="../bin/server" />
+		<copy todir="../bin/server" overwrite="true">
+				<fileset dir="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPLJEJB/dist">
+				</fileset>
+				</copy>	
+			<copy todir="../bin/server" overwrite="true">
+				<fileset dir="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/PNRJEJB/dist">
+				</fileset>
+				</copy>	
+		<copy todir="../bin/server" overwrite="true">
+					<fileset dir="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPIL/dist">
+					</fileset>
+					</copy>	
+		<copy todir="../bin/server/META-INF" overwrite="true">
+							<fileset dir="../META-INF">
+							</fileset>
+							</copy>	
+		<copy todir="../bin/server/lib" overwrite="true">
+								<fileset dir="../lib">
+								</fileset>
+								</copy>	
+<!-- 		<javac nowarn="true" srcdir="${lib.home}" destdir="${build.home}/server" includeAntRuntime="true" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}"
+			target="1.6" source="1.6">
+			<classpath>
+				<path refid="compile.classpath"/>
+			</classpath>
+		</javac>  -->
+	</target>
+	
+
+	
+	<target name="package" depends="compile" description="generate the core jar">		 
+ 		<!-- create the server side jar -->
+
+	</target>
+	
+	<target name="ear_build" depends="package" description="generate the core jar">	
+		
+  <!--  <ear destfile="../dist/SPILEAR.ear" appxml="../bin/server/META-INF/application.xml"> -->
+        <ear destfile="../dist/SPILEAR.ear" appxml="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPILEAR/META-INF/application.xml">
+
+  <!--    <fileset dir="../bin/server"/> -->
+        	
+            <fileset dir="../bin/server">
+            	<exclude name="META-INF/application.xml"/> 
+            	    </fileset> 
+        	
+    </ear>
+	</target>
+	
+    <target name="build_subprojects" description="build all subprojects">
+        <ant antfile="../../SPLJEJB/build/build.xml" dir="../../SPLJEJB/build" inheritAll="false"/>
+        <ant antfile="../../PNRJEJB/build/build.xml" dir="../../PNRJEJB/build" inheritAll="false"/>
+        <ant antfile="../../SPIL/build/build.xml" dir="../../SPIL/build" inheritAll="false"/>
+
+    </target>
+	
+	
+	
+	</project>

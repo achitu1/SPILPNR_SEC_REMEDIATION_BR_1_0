@@ -1,0 +1,9 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\PNRJ\helper
+2
+5
+16:ConfigurationUtil.java|1|15b7c613c5b|b33|49af9596|a861f824711211e099a8000180ed7ddd|0
+1a:CustomValidationRules.java|1|15b7c613ccd|f33|3d0a8193|6741de260f5411e78d8900306e4b3e41|0
+e:EJBLookup.java|1|15b7c613da6|858|75898b24|a861f854711211e099a8000180ed7ddd|0
+d:PNRJUtil.java|1|15b7c613e08|17ef|4fd3e309|6f7586ae0f5511e78e4000306e4b3e41|0
+10:DeltaAssert.java|1|15b7c613d3f|241|b93ca688|a861f844711211e099a8000180ed7ddd|0

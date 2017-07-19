@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+  "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<definition name="SPLJNav.default" path="/WEB-INF/layouts/SPLJDefaultNav.jsp">
+  		<put name="title"  value="SPIL - Special Passenger Information List"/>
+  		<put name="logo"   value="/WEB-INF/tiles/SPLJ/SPLJ001_logo.jsp" />
+  		<put name="nav"    value="/WEB-INF/tiles/SPLJ/nav.jsp" />
+  		<put name="footer" value="/WEB-INF/tiles/SPLJ/SPLJ001_footer.jsp" />
+ 	</definition>
+ 	
+ 	 	<definition name="OnDemandSPLJNav.defaultF" path="/WEB-INF/layouts/SPLJDefaultNavOnDemand2.jsp">
+  		<put name="title"  value="SPIL - Special Passenger Information List"/>
+  		<put name="logo"   value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandlogo.jsp" />
+  		<put name="nav"    value="/WEB-INF/tiles/SPLJ/navOnDemand.jsp" />
+  		<put name="footer" value="/WEB-INF/tiles/SPLJ/SPLJ001_footerOnDemand.jsp" />
+  		<!-- on demand changes begin -->
+  		  		<put name="OnDemandSearchWindow" value="/WEB-INF/tiles/SPLJ/request_OnDemand.jsp"/>
+  		<!-- on demand changes end -->
+  		
+ 	</definition>
+ 	
+ 		<definition name="OnDemandSPLJNav.default" path="/WEB-INF/layouts/SPLJDefaultNavOnDemand.jsp">
+  		<put name="title"  value="SPIL - Special Passenger Information List"/>
+  		<put name="logo"   value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandlogo.jsp" />
+  		<put name="nav"    value="/WEB-INF/tiles/SPLJ/navOnDemand.jsp" />
+  		<put name="footer" value="/WEB-INF/tiles/SPLJ/SPLJ001_footerOnDemand.jsp" />
+  		<!-- on demand changes begin -->
+  		  	<!-- 	<put name="OnDemandSearchWindow" value="/WEB-INF/tiles/SPLJ/request_OnDemand.jsp"/> -->
+  		<!-- on demand changes end -->
+  		
+ 	</definition>
+
+ 	
+	<definition name="SPLJ001.flight" extends="SPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_flightInquiry.jsp" />
+ 	
+ 	</definition>
+ 	
+ 	<definition name="SPLJ001.passenger" extends="SPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_passengerInquiry.jsp" />
+ 	</definition>
+ 	
+ 	<definition name="SPLJ001.frequentFlier" extends="SPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_frequentFlierInquiry.jsp" />
+ 	</definition>
+ 	
+ 	<definition name="SPLJ001.other" extends="SPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_otherInquiry.jsp" />
+ 	</definition>
+ 	
+ 	<definition name="SPLJ001.waitlist" extends="SPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_waitlistInquiry.jsp" />
+ 	</definition>
+ 	
+<!-- SPIL on-demand changes begin -->
+
+ 	<definition name="SPLJ001.OnDemandWaitlist" extends="OnDemandSPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandWaitlistInquiry.jsp" />
+ 	</definition>
+
+ 	<definition name="SPLJ001.OnDemandOther" extends="OnDemandSPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandOtherInquiry.jsp" />
+ 	</definition>
+
+
+		<definition name="SPLJ001.OnDemandFrequentFlier" extends="OnDemandSPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandfrequentFlierInquiry.jsp" />
+ 		</definition>
+
+		<definition name="SPLJ001.OnDemandpassenger" extends="OnDemandSPLJNav.default">
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandpassengerInquiry.jsp" />
+ 		</definition>
+
+ 	<definition name="PNRJNavOnDemand.default" path="/WEB-INF/layouts/PNRJDefaultNavOnDemand.jsp">
+  		<put name="title"  value="SPIL - Special Passenger Information List"/>
+  		<put name="logo"   value="/WEB-INF/tiles/SPLJ/SPLJ001_logo.jsp" />
+  		<put name="nav"    value="/WEB-INF/tiles/SPLJ/navOnDemand.jsp" />
+  		<put name="footer" value="/WEB-INF/tiles/SPLJ/SPLJ001_footerOnDemand.jsp" />
+ 	</definition>
+ 	
+ 			<definition name="SPLJ001.onDemandflight" extends="OnDemandSPLJNav.defaultF"> <!-- extends="SPLJNavOnDemand.default"> -->
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_onDemandFlightInquiry.jsp" />
+ 	 	<put name="OnDemandSearchWindow" value="/WEB-INF/tiles/SPLJ/request_OnDemand.jsp"/>
+ 	
+ 		</definition>
+ 		
+ 		<definition name="SPLJ001.onDemandflight2" extends="OnDemandSPLJNav.default"> <!-- extends="SPLJNavOnDemand.default"> -->
+  		<put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLJ001_onDemandFlightInquiry.jsp" />
+ 	 	<!-- <put name="OnDemandSearchWindow" value="/WEB-INF/tiles/SPLJ/request_OnDemand.jsp"/> -->
+ 	
+ 		</definition>
+
+ 	<definition name="SPLJNavOnDemand.default" path="/WEB-INF/layouts/SPLJDefaultNavOnDemand.jsp">
+  		<put name="title"  value="SPIL - Special Passenger Information List"/>
+  		<put name="logo"   value="/WEB-INF/tiles/SPLJ/SPLJ001_logo.jsp" />
+  		<put name="nav"    value="/WEB-INF/tiles/SPLJ/navOnDemand.jsp" />
+  		<put name="footer" value="/WEB-INF/tiles/SPLJ/SPLJ001_footerOnDemand.jsp" />
+  		<put name="OnDemandSearchWindow" value="/WEB-INF/tiles/SPLJ/request_OnDemand.jsp"/>
+ 	</definition>
+ 
+
+ 	<definition name="SPILHelpCodes" path="/WEB-INF/tiles/SPLJ/SPLHelpCodes.jsp" />
+  
+    <definition name="SPLPassenger" extends="SPLJNav.default">
+	  <put name="mainwindow" value="/WEB-INF/tiles/SPLJ/SPLPassengerLookup.jsp" />
+	  <put name="title" 	value="SPIL - Passenger Names List"/>
+	  <put name="logo" 		value="/WEB-INF/tiles/SPLJ/SPLJ001_logo.jsp" />
+	  <put name="nav" 		value="/WEB-INF/tiles/SPLJ/blank.jsp" />
+	  <put name="footer" 	value="/WEB-INF/tiles/SPLJ/SPLJ001_footer.jsp" />
+   </definition>
+
+<!-- SSR pages -->
+	<definition name="SPLJ001.ssr.default" page="/WEB-INF/tiles/SPLJ/SPLJ001_ssrInquiry.jsp">
+  		<put name="title"  value="SPIL - Special Passenger Information List"/>
+  		<put name="logo"   value="/WEB-INF/tiles/SPLJ/SPLJ001_logo.jsp" />
+  		<put name="nav"    value="/WEB-INF/tiles/SPLJ/nav.jsp" />
+		<put name="navfoot"    value="/WEB-INF/tiles/SPLJ/navfoot.jsp" />
+  		<put name="footer" value="/WEB-INF/tiles/SPLJ/SPLJ001_footer.jsp" />
+ 	</definition>
+
+	<definition name="SPLJ001.ssr" extends="SPLJ001.ssr.default">
+  		<put name="ssrSubBody" value="/WEB-INF/tiles/SPLJ/blank.jsp" />
+ 	</definition>
+
+	<definition name="SPLJ001.ssrList" extends="SPLJ001.ssr.default">
+  		<put name="ssrSubBody" value="/WEB-INF/tiles/SPLJ/SPLJ001_ssrInquirySubBodyResultList.jsp" />
+ 	</definition>
+
+	<definition name="SPLJ001.ssrRowSelected" extends="SPLJ001.ssr.default">
+  		<put name="ssrSubBody" value="/WEB-INF/tiles/SPLJ/SPLJ001_ssrInquirySubBodyRowSelected.jsp" />
+ 	</definition>
+
+	<definition name="SPLJ001.OnDemandSsrNoRecords" extends="SPLJ001.ssr.default">
+  		<put name="ssrSubBody" value="/WEB-INF/tiles/SPLJ/SPLJ001_ssrInquirySubBodyNoRecords.jsp" />
+ 	</definition>
+<!-- SSR Pages On-Demand begin -->
+
+	<definition name="SPLJ001.ssr.defaultOnDemand" page="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandssrInquiry.jsp">
+  		<put name="title"  value="SPIL - Special Passenger Information List"/>
+  		<put name="logo"   value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandlogo.jsp" />
+  		<put name="nav"    value="/WEB-INF/tiles/SPLJ/navOnDemand.jsp" />
+		<put name="navfoot"    value="/WEB-INF/tiles/SPLJ/navfoot.jsp" />
+  		<put name="footer" value="/WEB-INF/tiles/SPLJ/SPLJ001_footer.jsp" />
+ 	</definition>
+
+	<definition name="SPLJ001.OnDemandSsr" extends="SPLJ001.ssr.defaultOnDemand">
+  		<put name="ssrSubBody" value="/WEB-INF/tiles/SPLJ/blank.jsp" />
+ 	</definition>
+
+	<definition name="SPLJ001.OnDemandSsrList" extends="SPLJ001.ssr.defaultOnDemand">
+  		<put name="ssrSubBody" value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandssrInquirySubBodyResultList.jsp" />
+ 	</definition>
+
+	<definition name="SPLJ001.OnDemandSsrRowSelected" extends="SPLJ001.ssr.defaultOnDemand">
+  		<put name="ssrSubBody" value="/WEB-INF/tiles/SPLJ/SPLJ001_OnDemandssrInquirySubBodyRowSelected.jsp" />
+ 	</definition>
+
+	<definition name="SPLJ001.OnDemandSsrNoRecords" extends="SPLJ001.ssr.defaultOnDemand">
+  		<put name="ssrSubBody" value="/WEB-INF/tiles/SPLJ/SPLJ001_ssrInquirySubBodyNoRecords.jsp" />
+ 	</definition>
+ 	
+ 	
+ 	 	<definition name="OnDemandSearchWindow" path="/WEB-INF/tiles/SPLJ/request_OnDemand.jsp" />
+ 	
+<!-- SSR Pages On-Demand begin -->
+</tiles-definitions>

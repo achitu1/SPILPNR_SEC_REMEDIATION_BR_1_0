@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+UseWSFEP61ScanPolicy: true
+Class-Path: PNRJEJB.jar 
+ SPLJEJB.jar 
+ lib/PraCommon.jar 
+ lib/jakarta-regexp-1.3.jar 
+ lib/log4j-1.2.8.jar
+ SPLODMDB.jar
+ spring-2.0.1.jar
+

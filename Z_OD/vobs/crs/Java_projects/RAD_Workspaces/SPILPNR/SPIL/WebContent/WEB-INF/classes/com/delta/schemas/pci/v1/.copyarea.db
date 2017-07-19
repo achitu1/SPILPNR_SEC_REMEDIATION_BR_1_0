@@ -1,0 +1,11 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\pci\v1
+2
+7
+f:pcitokenmgrresp|2|0|0|0|4911f22975da4f2da2ec9d24bc4ebf79|0
+b:countryinfo|2|0|0|0|8dfb84c188494119aa352aba0acd2304|0
+a:dictionary|2|0|0|0|abe9666ad68f4729880cc521ef354342|0
+b:pciitemstat|2|0|0|0|48f01953a9914483b6354269510e97b3|0
+b:requestinfo|2|0|0|0|9cc353d16f1041debcaa08e2e95ca64e|0
+8:pcitoken|2|0|0|0|5c4a8d72192549479fb04f1d91992fae|0
+6:pcipan|2|0|0|0|5e45361144504287a6ea5087426c4bbc|0

@@ -1,0 +1,227 @@
+body, table, td, form { font-family: arial, verdana, sans-serif; font-size: 11px; margin: 0px; background-repeat: repeat;}
+body {background-color: #ffffff; margin-left: 5%; margin-right: 5%; }
+small { font-family: arial, verdana, sans-serif; font-size: 85%; margin: 0; }
+small.pnr { font-family: arial, verdana, sans-serif; font-size: 11px; color: #000000; margin: 0; padding-top: 0px;}
+small.copyright { color: #666666; }
+table.filter, table.filter select, table.filter input { font-family: arial, verdana, sans-serif; font-size: 11px; margin: 0px;}
+a { color: #000000; font-size: 11px; text-decoration: none; }
+a:hover { text-decoration: none; }	
+.gtLink { color: #233385; font-size: 80%; }
+
+.emphasis { color: #cc0000; font-size: 90%; }
+.footnote { color: #666666; font-size: 90%; }
+
+table.formTable { background-color: #E5E6EF; border-style: solid; border-color: #B1B4C5; border-width: 1px; }			
+table.formHeader { background-color: #B1B4C5; border-style: solid; border-color: #ffffff; border-bottom-width: 0px; border-top-width: 1px; border-left-width: 0px; border-right-width: 0px; }
+td.formHeader { color: #000000; font-weight: bold; } 
+td.pad-no-top { padding-top: 0px; margin-top: 0px; }
+
+hr { color: #000000; size: 1; }
+
+#errortop { color: red; FONT-SIZE: 9pt; font-weight: bold; }
+#error { color: red; FONT-SIZE: 9pt; font-weight: bold; }
+#messages { color: #233385; FONT-SIZE: 9pt; font-weight: bold; }
+#boldfont { FONT-SIZE: 9pt; font-weight: bold; }
+#headermessages { color: #000000; FONT-SIZE: 10pt; font-weight: bold; }
+#success { color: black;}
+.highlightlogin {
+	background-color: #3E62BC;
+}
+.highlight {
+	background-color: #e5e6ef;
+}
+.drkgrayhighlight {
+	background-color: #b1b4c5;
+}
+.ltgrayhighlight {
+	background-color: #e5e6ef;
+}
+.title1
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14pt;
+    COLOR: #336699;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+input.radio { background: #E5E6EF; color: #000000; } 
+select { font-size: 12px; margin: 0px; }
+select.header { font-size: 14px; margin: 0px; }
+.searchBox { font-family: arial, verdana, sans-serif; font-size: 11px; width: 80px; }
+.inputText  { font-size: 11px; margin: 1px; width: 85px; }	
+.inputText-small { font-size: 11px; margin: 1px; width: 45px; }	
+.inputText-mid { font-size: 11px; margin: 1px; width: 65px; }
+
+.wplogin-name { font-weight: bold; }  
+
+.features { font-family: arial,verdana,sans-serif; color: #ffffff; margin-left: 36px; }
+.features-headline { font-size: 20px; font-weight: bold; }
+.features-copy a { font-family: arial,verdana,sans-serif; font-size: 12px;  color: #FFFFFF}
+.features-copysmall { font-family: arial,verdana,sans-serif; font-size: 9px; }
+
+.sub_table
+{
+
+	BORDER-RIGHT: #b1b4c5 1px solid;
+    BORDER-TOP: #b1b4c5 1px solid;
+    BORDER-LEFT: #b1b4c5 1px solid;
+    BORDER-BOTTOM: #b1b4c5 1px solid;
+    BACKGROUND-COLOR: #e5e6ef
+}
+sub_table.input
+{
+	font-family: arial, verdana, sans-serif; font-size: 11px; margin: 0px;
+}
+
+.subtable_header_bold
+{
+    PADDING-LEFT: 3px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    BACKGROUND-COLOR: #b1b4c5;
+    TEXT-ALIGN: left;
+    BORDER-RIGHT: #ffffff 0px solid;
+    BORDER-TOP: #ffffff 0px solid;
+    BORDER-LEFT: #ffffff 0px solid;
+    BORDER-BOTTOM: #ffffff 0px solid;
+}
+
+.subtable_header_norm
+{
+    PADDING-LEFT: 3px;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    BACKGROUND-COLOR: #b1b4c5;
+    TEXT-ALIGN: left;
+    BORDER-RIGHT: #ffffff 0px solid;
+    BORDER-TOP: #ffffff 0px solid;
+    BORDER-LEFT: #ffffff 0px solid;
+    BORDER-BOTTOM: #ffffff 0px solid;
+}
+
+
+.listTable2
+{
+    BORDER-RIGHT: silver thin solid;
+    BORDER-TOP: silver thin solid;
+    FONT-SIZE: 10pt;
+    BORDER-LEFT: silver thin solid;
+    BORDER-BOTTOM: silver thin solid;
+    FONT-FAMILY: Verdana, Arial;
+    BACKGROUND-COLOR: #e5e6ef
+}
+
+.sub_table_print
+{
+    BORDER-RIGHT: #000000 1px solid;
+    BORDER-TOP: #000000 1px solid;
+    BORDER-LEFT: #000000 1px solid;
+    BORDER-BOTTOM: #000000 1px solid;
+}
+
+.subtable_header_print
+{
+    PADDING-LEFT: 3px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-ALIGN: left;
+    BORDER-RIGHT: #000000 0px solid;
+    BORDER-TOP: #000000 0px solid;
+    BORDER-LEFT: #000000 0px solid;
+    BORDER-BOTTOM: #000000 0px solid;
+}
+a.headerLink {
+	font-family: arial, verdana, sans-serif; 
+	color: #000000; 
+	font-size: 12px; 
+	text-decoration: none;
+	font-weight:bold;
+}
+
+.row1hover {
+	background-color: #FFFFCC;
+}
+
+table.logoheader {
+    background: background-image;
+    background-image: url(../images/header_03.jpg);
+    background-repeat:repeat-x;
+    background-position:right top;
+    height: 67px;
+}
+
+/*------ DISPLAY TAG start---------*/
+
+/* set table header to a fixed position.                                        */
+thead.fixedHead tr {
+	position: relative;
+	top: expression(document.getElementById("tableContainer").scrollTop - 2);	
+	background: #FFFFFF;	
+}
+
+thead.fixedHead th {
+	background: #B1B4C5;
+	border-style: solid;
+	border-color: #B1B4C5;
+	border-bottom-width: 0px;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+
+	PADDING-LEFT: 3px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-ALIGN: center;
+}
+
+thead.fixedHeader tr {
+	position: relative;
+	top: expression(document.getElementById("tableContainer").scrollTop - 2);
+	background: #FFFFFF;		
+}
+
+thead.fixedHeader th {
+	background: #B1B4C5;
+	border-style: solid;
+	border-color: #ffffff;
+	border-bottom-width: 0px;
+	border-top-width: 1px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+
+	PADDING-LEFT: 3px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-ALIGN: center;
+}
+
+tbody.scrollContent tr{ 
+	background-color: #E5E6EF;
+	border-style: solid;
+	border-color: #B1B4C5;
+	border-bottom-width: 0px;
+	border-top-width: 1px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	
+	padding-left: 3px;
+	font-family: arial, verdana, sans-serif;
+	font-size: 11px;
+
+	height: 17px;
+}
+/*------ DISPLAY TAG end---------*/
+
+
+.requiredText{
+	
+	color: red;
+	FONT-SIZE: 8pt;
+	font-family: arial, verdana, sans-serif;
+
+}

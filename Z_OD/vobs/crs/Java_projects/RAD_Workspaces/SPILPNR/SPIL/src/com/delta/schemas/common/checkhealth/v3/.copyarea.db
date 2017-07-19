@@ -1,0 +1,10 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\common\checkhealth\v3
+2
+6
+15:HealthStatusType.java|1|15b7c61555d|575|6f259fd3|7f43db530f1611e796be00306e4b3e41|0
+1c:CheckHealthResponseType.java|1|15b7c6154c5|d6e|d06b246c|7b4958d70f1611e796b600306e4b3e41|0
+12:ObjectFactory.java|1|15b7c6155a3|c36|2614f772|812d385b0f1611e796c200306e4b3e41|0
+22:CheckHealthGenericRequestType.java|1|15b7c61546d|77b|448b42bf|7957c65a0f1611e796af00306e4b3e41|0
+16:HealthMessageType.java|1|15b7c61550b|cfe|934cc858|7d7989ae0f1611e796ba00306e4b3e41|0
+11:package-info.java|1|15b7c6155e8|135|f4e06304|83147c1a0f1611e796c600306e4b3e41|0

@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\pci\v1\pciitemstat
+2
+4
+1c:ArrayOfPciTokItemStatus.java|1|15b7c6145e8|8f6|ca99b1c2|a901f910711211e099a8000180ed7ddd|0
+12:ObjectFactory.java|1|15b7c614662|5e8|f521cd3c|a901f920711211e099a8000180ed7ddd|0
+15:PciTokItemStatus.java|1|15b7c6147bc|2ebc|18920b2f|a901f940711211e099a8000180ed7ddd|0
+11:package-info.java|1|15b7c6146c4|136|f1f86146|a901f930711211e099a8000180ed7ddd|0

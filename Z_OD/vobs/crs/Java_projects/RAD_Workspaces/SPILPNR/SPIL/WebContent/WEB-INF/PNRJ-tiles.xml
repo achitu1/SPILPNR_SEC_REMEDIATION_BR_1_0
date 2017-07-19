@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+  "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+  
+ <tiles-definitions>
+
+  <!-- On Demand Changes begin -->
+   <definition name="OnDemandPNRJNav.default" path="/WEB-INF/layouts/PNRJDefaultNavOnDemand.jsp">
+  <put name="logo" value="/WEB-INF/tiles/PNRJ/OnDemandlogo.jsp" /> 
+  <put name="nav" value="/WEB-INF/tiles/PNRJ/navOnDemand.jsp" /> 
+  <put name="onDemandWindow" value="/WEB-INF/tiles/SPLJ/request_OnDemand.jsp" /> 
+  <put name="footer" value="/WEB-INF/tiles/PNRJ/footer.jsp" /> 
+  </definition>
+  
+  
+  <definition name="PNRJ.OnDemanddefault" path="/WEB-INF/layouts/OnDemandPNRJDefault.jsp">
+  <put name="footer" value="/WEB-INF/tiles/PNRJ/footer.jsp" /> 
+  </definition>
+  <definition name="PNR.OnDemanddefault" path="/WEB-INF/layouts/OnDemandPNRJDefaultLogo.jsp">
+  <put name="header" value="/WEB-INF/tiles/PNRJ/pnrHeader.jsp" /> 
+  <put name="logo" value="/WEB-INF/tiles/PNRJ/OnDemandlogo.jsp" /> 
+  <put name="footer" value="/WEB-INF/tiles/PNRJ/footer.jsp" /> 
+  </definition>
+  
+  <definition name="PNRJ002.OnDemandindex" extends="PNR.OnDemanddefault">
+  <put name="mainwindow" value="/WEB-INF/tiles/PNRJ/OnDemandPRAJ002.jsp" /> 
+  </definition>
+  <!-- On Demand changes ends -->
+  
+  <definition name="PNRJNav.default" path="/WEB-INF/layouts/PNRJDefaultNav.jsp">
+  <put name="logo" value="/WEB-INF/tiles/PNRJ/logo.jsp" /> 
+  <put name="nav" value="/WEB-INF/tiles/PNRJ/nav.jsp" /> 
+  <put name="footer" value="/WEB-INF/tiles/PNRJ/footer.jsp" /> 
+  </definition>
+  
+ <definition name="PNRJ.default" path="/WEB-INF/layouts/PNRJDefault.jsp">
+  <put name="footer" value="/WEB-INF/tiles/PNRJ/footer.jsp" /> 
+  </definition>
+  
+ <definition name="PNR.default" path="/WEB-INF/layouts/PNRJDefaultLogo.jsp">
+  <put name="header" value="/WEB-INF/tiles/PNRJ/pnrHeader.jsp" /> 
+  <put name="logo" value="/WEB-INF/tiles/PNRJ/logo.jsp" /> 
+  <put name="footer" value="/WEB-INF/tiles/PNRJ/footer.jsp" /> 
+  </definition>
+  
+ <definition name="PNRJ002.index" extends="PNR.default">
+  <put name="mainwindow" value="/WEB-INF/tiles/PNRJ/PRAJ002.jsp" /> 
+  </definition>
+ <definition name="PNRJ002.outline" extends="PNRJNav.default">
+  <put name="logo" value="/WEB-INF/tiles/PNRJ/PNRJ002_logo.jsp" /> 
+  <put name="nav" value="/WEB-INF/tiles/PNRJ/nav.jsp" /> 
+  <put name="footer" value="/WEB-INF/tiles/PNRJ/PNRJ002_footer.jsp" /> 
+  </definition>
+  <!-- on demand changes begin -->
+   <definition name="PNRJ002OnDemand.outline" extends="OnDemandPNRJNav.default">
+  <put name="logo" value="/WEB-INF/tiles/PNRJ/PNRJ002_OnDemandlogo.jsp" /> 
+  <put name="nav" value="/WEB-INF/tiles/PNRJ/navOnDemand.jsp" /> 
+  <put name="footer" value="/WEB-INF/tiles/PNRJ/PNRJ002_footer.jsp" /> 
+  </definition>
+    <!-- on demand changes end -->
+  
+ <definition name="PNRJ.login" extends="PNRJ002.outline">
+  <put name="title" value="" /> 
+  <put name="logo" value="/WEB-INF/tiles/logo.jsp" /> 
+  <put name="mainwindow" value="/WEB-INF/tiles/Login.jsp" /> 
+  </definition>
+ <definition name="PNRJ002.default" extends="PNRJ002.outline">
+  <put name="title" value="Historical PNR Inquiry" /> 
+  <put name="mainwindow" value="/WEB-INF/tiles/PNRJ/PNRJ002_lookupDefault.jsp" /> 
+  </definition>
+  <!-- on demand change begin -->
+  <definition name="PNRJ002.OnDemanddefault" extends="PNRJ002OnDemand.outline">
+  <put name="title" value="On Demand PNR Inquiry" /> 
+  <put name="mainwindow" value="/WEB-INF/tiles/PNRJ/PNRJ002_OnDemandlookupDefault.jsp" /> 
+  </definition>
+  <!-- on-demand change end -->
+ <definition name="PNRJ002.passenger" extends="PNRJ002.outline">
+  <put name="title" value="Historical PNR Inquiry" /> 
+  <put name="mainwindow" value="/WEB-INF/tiles/PNRJ/PNRJ002_lookupPassenger.jsp" /> 
+  </definition>
+ <definition name="PNRJ002.flight" extends="PNRJ002.outline">
+  <put name="title" value="Historical PNR Inquiry" /> 
+  <put name="mainwindow" value="/WEB-INF/tiles/PNRJ/PNRJ002_lookupFlight.jsp" /> 
+  </definition>
+ <definition name="PNRJ002.origDest" extends="PNRJ002.outline">
+  <put name="title" value="Historical PNR Inquiry" /> 
+  <put name="mainwindow" value="/WEB-INF/tiles/PNRJ/PNRJ002_lookupOrigDest.jsp" /> 
+  </definition>
+  </tiles-definitions>

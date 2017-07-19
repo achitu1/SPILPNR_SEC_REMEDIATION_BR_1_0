@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\common\ptrauthdata\v2
+2
+3
+21:PrinterAuthorizationDataType.java|1|15b7c615b62|fa6|cecdacf9|0487e5260f1711e797c000306e4b3e41|0
+12:ObjectFactory.java|1|15b7c615ad2|839|1348b855|00dc3e450f1711e797b800306e4b3e41|0
+11:package-info.java|1|15b7c615b20|f1|a4044b0f|02a28d770f1711e797bc00306e4b3e41|0

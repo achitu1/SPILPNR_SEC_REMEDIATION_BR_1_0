@@ -1,0 +1,14 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\soa\pci\soagov\v1
+2
+a
+1f:LookupArrayOfTokensRequest.java|1|15b7c616e49|a80|5dc2141b|a991fa60711211e099a8000180ed7ddd|0
+1f:DecodeArrayOfTokensRequest.java|1|15b7c616d9d|a38|a394f87c|a991fa40711211e099a8000180ed7ddd|0
+12:ArrayOfString.java|1|15b7c616d57|842|61f06b17|a991fa30711211e099a8000180ed7ddd|0
+18:PciTokenMgr_Service.java|1|15b7c616fa2|8fa|8436b5cd|a991fac0711211e099a8000180ed7ddd|0
+10:PciTokenMgr.java|1|15b7c616fe3|912|de0beb46|a991faa0711211e099a8000180ed7ddd|0
+12:ObjectFactory.java|1|15b7c616ed2|899|73f29ae3|a991fa80711211e099a8000180ed7ddd|0
+18:PciTokenMgr_EPProxy.java|1|15b7c616f5f|d03|7a5deb78|a991fab0711211e099a8000180ed7ddd|0
+20:DecodeArrayOfTokensResponse.java|1|15b7c616ded|813|b72774b|a991fa50711211e099a8000180ed7ddd|0
+20:LookupArrayOfTokensResponse.java|1|15b7c616e8f|813|43479d3|a991fa70711211e099a8000180ed7ddd|0
+11:package-info.java|1|15b7c616f13|e0|c3c14185|a991fa90711211e099a8000180ed7ddd|0

@@ -1,0 +1,9 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\common\requestinfo\v4
+2
+5
+1a:HostContextParamsType.java|1|15b7c615cb8|1b0e|184ba974|27673e0c0f1711e797d000306e4b3e41|0
+14:RequestInfoType.java|1|15b7c615da3|2ae3|eaff4d91|2ef868980f1711e797f100306e4b3e41|0
+12:ObjectFactory.java|1|15b7c615d00|de1|16f77dac|294f64370f1711e797d300306e4b3e41|0
+19:DBConnectionInfoType.java|1|15b7c615c66|bdd|4dce6f4a|258789ea0f1711e797c900306e4b3e41|0
+11:package-info.java|1|15b7c615d42|135|1a9f6388|2b8560820f1711e797d700306e4b3e41|0

@@ -1,0 +1,9 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\common\fault\v4
+2
+5
+15:FaultDetailsType.java|1|15b7c6158f9|1898|326e4337|b1e029620f1611e7972000306e4b3e41|0
+12:ObjectFactory.java|1|15b7c61593e|d54|4f2f466b|b3e62a4d0f1611e7972400306e4b3e41|0
+14:SystemFaultType.java|1|15b7c6159ce|708|57242761|b7cec7930f1611e7972b00306e4b3e41|0
+16:BusinessFaultType.java|1|15b7c6158b4|710|a8aa2a7d|b009b6360f1611e7971800306e4b3e41|0
+11:package-info.java|1|15b7c61598a|129|44ed5e56|b5d1354c0f1611e7972800306e4b3e41|0

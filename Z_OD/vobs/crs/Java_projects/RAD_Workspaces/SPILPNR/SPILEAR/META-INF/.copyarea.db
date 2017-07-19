@@ -1,0 +1,9 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPILEAR\META-INF
+2
+5
+17:ibm-application-bnd.xmi|1|15d1e86ef58|bc1|74ce8982|4cbd28fd6b0511e78bd500306e4b3e41|0
+9:ibmconfig|2|0|0|0|151397393ea748cc9faddf7df47262b4|0
+b:MANIFEST.MF|1|15b7c627412|22|cd0a0b35|2812d743195711e7845900306e4b3e41|0
+f:application.xml|1|15ccbcc2bbf|571|ad30b830|86112c7e6b0511e78c1e00306e4b3e41|0
+1b:clientPolicyAttachments.xml|1|15c36c7f3ac|30a|41d7fe58|a58c64994a0911e79c2600306e4b3e41|0

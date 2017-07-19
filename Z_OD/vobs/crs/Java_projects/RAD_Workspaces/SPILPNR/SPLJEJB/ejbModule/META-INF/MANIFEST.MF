@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Class-Path: PraCommon.jar 
+ jakarta-regexp-1.3.jar 
+ log4j-1.2.8.jar 
+ j2ee.jar 
+ com.ibm.ws.runtime.jar
+

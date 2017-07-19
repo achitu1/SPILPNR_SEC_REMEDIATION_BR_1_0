@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPLJEJB\ejbModule\META-INF
+2
+4
+b:MANIFEST.MF|1|15d51255ec6|87|58342930|d72a2d266b0411e78b8700306e4b3e41|0
+15:ibm_ejbext.properties|1|15b7c6294c8|3c|e4bf10fd|5d52228c711511e099a8000180ed7ddd|0
+b:ejb-jar.xml|1|15b7c629452|262|e2d6be8d|5d52226c711511e099a8000180ed7ddd|0
+13:ibm-ejb-jar-bnd.xmi|1|15b7c629542|611|54c6e3b4|6638cfd40f3911e7861300306e4b3e41|0

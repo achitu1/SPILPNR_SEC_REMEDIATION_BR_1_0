@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\common\debuginfo\v4
+2
+3
+12:DebugInfoType.java|1|15b7c615701|1b7c|54bdfb9f|973caaa50f1611e796e000306e4b3e41|0
+12:ObjectFactory.java|1|15b7c61574b|75d|d3be5aac|9921c2880f1611e796e700306e4b3e41|0
+11:package-info.java|1|15b7c61578c|131|62df6184|9c1726d70f1611e796fe00306e4b3e41|0

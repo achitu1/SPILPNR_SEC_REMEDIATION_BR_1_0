@@ -1,0 +1,9 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\PNRJEJB\ejbModule\com\delta\PRA\PNRJ\EJB
+2
+5
+9:PNRJ.java|1|15b7c60fb20|1001|20ea3b2b|d13dfa500fff11e796a200306e4b44bb|0
+d:PNRJHome.java|1|15b7c60fdf5|14f|63d86595|6c31f138711311e099a8000180ed7ddd|0
+12:PNRJLocalHome.java|1|15b7c61001e|147|f8006390|6cc1f178711311e099a8000180ed7ddd|0
+e:PNRJLocal.java|1|15b7c60ff12|80f|28bfc8f2|b4b0043d0e7f11e78aea00306e4b3e41|0
+d:PNRJBean.java|1|15b7c60fcbd|b569|f1a3c7|d9610bce0f4a11e7838f00306e4b3e41|0

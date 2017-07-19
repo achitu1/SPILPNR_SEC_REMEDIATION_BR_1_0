@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="Application_ID" version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
+	<display-name>SPILEAR</display-name>
+	<module id="WebModule_1288722178149">
+		<web>
+			<web-uri>SPIL.war</web-uri>
+			<context-root>SPIL</context-root>
+		</web>
+	</module>
+	<module id="EjbModule_1288724252349">
+		<ejb>PNRJEJB.jar</ejb>
+	</module>
+	<module id="EjbModule_1288724252365">
+		<ejb>SPLJEJB.jar</ejb>
+	</module>
+	<module id="EjbModule_1498067774369">
+		<ejb>SPLODMDB.jar</ejb>
+	</module>
+	<security-role id="SecurityRole_1288725253386">
+		<description>
+		queryonly</description>
+		<role-name>queryonly</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1288725286813">
+		<description>
+		querycc</description>
+		<role-name>querycc</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1288884856773">
+		<description>
+		authorizedUsers</description>
+		<role-name>authorizedUsers</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1464017218089">
+		<role-name>SppOnDemondUser</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1485541247038">
+		<role-name>queryOtherEmps</role-name>
+	</security-role>
+</application>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applicationbnd:ApplicationBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:applicationbnd="applicationbnd.xmi" xmi:id="ApplicationBinding_1288725219210">
+  <authorizationTable xmi:id="AuthorizationTable_1288725219210">
+    <authorizations xmi:id="RoleAssignment_1288725253386">
+      <role href="META-INF/application.xml#SecurityRole_1288725253386"/>
+      <groups xmi:id="Group_1499452305933" name="SppPnrWebA1"/>
+      <groups xmi:id="Group_1499452305934" name="SppPNRWebC2"/>
+      <groups xmi:id="Group_1499452305935" name="SppPNRWebI1"/>
+      <groups xmi:id="Group_1499452305936" name="SppPNRWebM1"/>
+      <groups xmi:id="Group_1499452305937" name="SppPNRWebP1"/>
+      <groups xmi:id="Group_1499452305938" name="SppPNRWebR1"/>
+      <groups xmi:id="Group_1499452305939" name="SppPNRWebS1"/>
+      <groups xmi:id="Group_1499452305940" name="SppPNRWebU1"/>
+      <groups xmi:id="Group_1499452305941" name="SppPNRWebW1"/>
+      <groups xmi:id="Group_1499452305942" name="SppPNRWebPRA"/>
+      <groups xmi:id="Group_1499452305943" name="SppSPLWebPRA"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1288725286813">
+      <role href="META-INF/application.xml#SecurityRole_1288725286813"/>
+      <groups xmi:id="Group_1499452305944" name="SppPNRWebC1"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1288889567877">
+      <role href="META-INF/application.xml#SecurityRole_1288884856773"/>
+      <groups xmi:id="Group_1499452305943" name="SppSPLWebPRA"/>
+      <groups xmi:id="Group_1499452305942" name="SppPNRWebPRA"/>
+      <groups xmi:id="Group_1499452305945" name="CN=SppSplWebU1,OU=Groups,dc=delta,dc=rl,dc=delta,dc=com"/>
+      <groups xmi:id="Group_1499452305946" name="SppSPLWebA1"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1464017218089">
+      <role href="META-INF/application.xml#SecurityRole_1464017218089"/>
+      <groups xmi:id="Group_1499455522652" name="SppOnDemondUser"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1485541247038">
+      <role href="META-INF/application.xml#SecurityRole_1485541247038"/>
+      <groups xmi:id="Group_1499452305948" name="CN=SppPNRWebP1,OU=Groups,dc=delta,dc=rl,dc=delta,dc=com"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1490885484621">
+      <users xmi:id="User_1499452305934" name="433033"/>
+      <role href="META-INF/application.xml#SecurityRole_1490636311626"/>
+      <groups xmi:id="Group_1499455522652" name="SppOnDemondUser"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1490885498552">
+      <role href="META-INF/application.xml#SecurityRole_1485382128544"/>
+      <groups xmi:id="Group_1499452305948" name="CN=SppPNRWebP1,OU=Groups,dc=delta,dc=rl,dc=delta,dc=com"/>
+    </authorizations>
+  </authorizationTable>
+  <application href="META-INF/application.xml#Application_ID"/>
+</applicationbnd:ApplicationBinding>

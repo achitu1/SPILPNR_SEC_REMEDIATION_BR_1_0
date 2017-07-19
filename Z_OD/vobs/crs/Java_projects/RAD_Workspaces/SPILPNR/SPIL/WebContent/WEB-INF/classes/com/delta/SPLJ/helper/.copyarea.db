@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\SPLJ\helper
+2
+3
+d:SPLJUtil.java|1|15b7c618929|6df|cd3e0487|353ac93177f111e08357000180ed7ddd|0
+e:EJBLookup.java|1|15b7c6188d4|53e|41a79d2a|aac1fcc4711211e099a8000180ed7ddd|0
+14:UserCheckFilter.java|1|15b7c618971|16c4|44c36310|2f5ae316197a11e7931e00306e4b3e41|0

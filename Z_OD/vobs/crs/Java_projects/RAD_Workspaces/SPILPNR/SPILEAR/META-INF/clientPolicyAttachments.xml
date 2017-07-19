@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<psa:PolicySetAttachment xmlns:psa="http://www.ibm.com/xmlns/prod/websphere/200605/policysetattachment" xmlns:ps="http://www.ibm.com/xmlns/prod/websphere/200605/policyset">
+   <!--  <psa:PolicySetReference name="CRSSpil_policy" id="com.ibm.ast.ws.local.qos.policyset.id1"> -->
+       <!--  <psa:PolicySetBinding scope="domain" name="CRSSpil_binding"/> -->
+       <!--  <psa:Resource pattern="WebService:/"/> -->
+    <!-- </psa:PolicySetReference> -->
+<!-- </psa:PolicySetAttachment> -->
+    <psa:PolicySetReference id="1571" name="CRSSpil_policy">
+        <psa:PolicySetBinding name="CRSSpil_binding" scope="domain"/>
+        <psa:Resource pattern="WebService:/"/>
+    </psa:PolicySetReference>
+</psa:PolicySetAttachment>

@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Created by TIBCO WSDL--><wsdl:definitions name="SpecialPassengerInfoList" targetNamespace="http://soa.delta.com/specialpassengerinfolist" xmlns:ns0="http://schemas.delta.com/common/checkhealth/v3" xmlns:ns1="http://schemas.delta.com/specialpassengerinfolisttypes/v1" xmlns:ns2="http://schemas.delta.com/common/fault/v4" xmlns:ns3="http://schemas.delta.com/common/userauthdata/v2" xmlns:ns4="http://schemas.delta.com/common/requestinfo/v4" xmlns:ns5="http://schemas.delta.com/common/ptrauthdata/v2" xmlns:ns6="http://schemas.delta.com/common/responseinfo/v1" xmlns:ns7="http://schemas.delta.com/common/advisorymessage/v2" xmlns:ns8="http://schemas.delta.com/common/debuginfo/v4" xmlns:ns9="http://schemas.delta.com/common/stamping/v2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soa.delta.com/specialpassengerinfolist" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/userauthdata/v2" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.delta.com/common/userauthdata/v2">
+            <complexType name="UserAuthorizationDataType">
+                <attribute name="AgentCityCode" type="string">
+                    <annotation>
+                        <documentation>a3</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="RoleIndicator" type="string">
+                    <annotation>
+                        <documentation>an5..30</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="SecurityId" type="string">
+                    <annotation>
+                        <documentation>an1..10 User Login Id </documentation>
+                    </annotation>
+                </attribute>
+            </complexType>
+            <element name="UserAuthorizationData" type="tns:UserAuthorizationDataType"/>
+        </schema>
+        <schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/fault/v4" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:pref="http://schemas.delta.com/common/debuginfo/v4" xmlns:resp="http://schemas.delta.com/common/responseinfo/v1" xmlns:tns="http://schemas.delta.com/common/fault/v4">
+            <import namespace="http://schemas.delta.com/common/debuginfo/v4"/>
+            <import namespace="http://schemas.delta.com/common/responseinfo/v1"/>
+            <complexType name="BusinessFaultType">
+                <sequence>
+                    <element ref="tns:FaultDetailedInfo"/>
+                </sequence>
+            </complexType>
+            <complexType name="FaultDetailsType">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" ref="pref:DebugInfo"/>
+                    <element maxOccurs="unbounded" minOccurs="0" ref="resp:ResponseInfo"/>
+                </sequence>
+                <attribute name="AdditionalInfo" type="string">
+                    <annotation>
+                        <documentation>
+					information such as backend request, timings, etc --
+					anything that would be helpful in determining the
+					cause of the error
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="ErrorCode" type="string">
+                    <annotation>
+                        <documentation>
+					If there is no error code (from backend or
+					middleware) then leave blank
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="ErrorMessage" type="string">
+                    <annotation>
+                        <documentation>
+					Error Message - e.g: invalid arguments
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="StackTraceInfo" type="string">
+                    <annotation>
+                        <documentation>Error StackTrace</documentation>
+                    </annotation>
+                </attribute>
+            </complexType>
+            <complexType name="SystemFaultType">
+                <sequence>
+                    <element ref="tns:FaultDetailedInfo"/>
+                </sequence>
+            </complexType>
+            <element name="BusinessFault" type="tns:BusinessFaultType"/>
+            <element name="FaultDetailedInfo" type="tns:FaultDetailsType"/>
+            <element name="SystemFault" type="tns:SystemFaultType"/>
+        </schema>
+        <schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/requestinfo/v4" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.delta.com/common/requestinfo/v4">
+            <complexType name="DBConnectionInfoType">
+                <annotation>
+                    <documentation/>
+                </annotation>
+                <attribute name="BedsDBDnsNameId" type="string">
+                    <annotation>
+                        <documentation>
+    				An id to match the client with a particular dns for
+    				BEDS
+    			</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="TestBedsDBId" type="string">
+                    <annotation>
+                        <documentation>
+    				A predefined BookingEDS (BEDS) database instance id
+    			</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="TestFpesDBId" type="string">
+                    <annotation>
+                        <documentation>
+    				A predefined FPES database instance id
+    			</documentation>
+                    </annotation>
+                </attribute>
+            </complexType>
+            <complexType name="HostContextParamsType">
+                <attribute name="Airline" type="string">
+                    <annotation>
+                        <documentation>
+					Airline Code
+
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="City" type="string">
+                    <annotation>
+                        <documentation>
+					Specifies the City Code that is to be used; this has
+					implications as to which commands can be executed on
+					specific records.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="DutyCode" type="string"/>
+                <attribute name="LogonId" type="string">
+                    <annotation>
+                        <documentation>
+					If the session is to be created using an
+					individual's logon, this specifies the LogonId to be
+					utilized for this session. This can have various
+					implications including what commands can be
+					executed, etc.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="Password" type="string">
+                    <annotation>
+                        <documentation>
+					Password for the LogonId provided (if any)
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="PoolType" type="string">
+                    <annotation>
+                        <documentation> 
+					Indicates PoolName or a client's logged-in wsine
+					for which session is being 
+					requested. If a client's logged-in wsine is being
+					used, info in the format,  ;wsine=xxxxxx  should
+					be passed in for all operations that create or destroy a session.
+					If a client's logged-in wsine is being used AND this wsine needs
+					to be logged off during destroy, info in the format,  ;wsine=xxxxxx;logoff=Y/N  should
+					be passed in for all operations that create or destroy a session.
+					xxxxx is the wsine and logoff=Y would imply that 
+					during destroy the client's wsine will be logged off.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="ResetPassword" type="string">
+                    <annotation>
+                        <documentation>
+					ResetPassword is required if the password is to be
+					changed with this request. If this is present,
+					password for the LogonId should be changed to the
+					password requested. Don't ask why it is even here!
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="TimeoutInactivity" type="string">
+                    <annotation>
+                        <documentation>
+					Specify the timeout in seconds for the requested
+					session if the session is inactive for the duration
+					specified. This should be based on the type of
+					transaction the session is about to handle.
+					Inactivity timeout should be less than the
+					TimeoutSession. This should be an int with a range
+					from 0000 - 9998.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="TimeoutSession" type="string">
+                    <annotation>
+                        <documentation>
+					Specify the timeout in seconds for the requested
+					session. This should be based on the type of
+					transaction the session is about to handle. The
+					session will be terminated when this is reached even
+					if there is activity against the session. This
+					should be an int with a range from 0000 - 9999.
+				</documentation>
+                    </annotation>
+                </attribute>
+            </complexType>
+            <complexType name="RequestInfoType">
+                <sequence>
+                    <element minOccurs="0" ref="tns:HostContextParams"/>
+                    <element minOccurs="0" ref="tns:DBConnectionInfo"/>
+                </sequence>
+                <attribute name="AppChannelName" type="string">
+                    <annotation>
+                        <documentation>
+					The name of the channel from which the request is
+					originating, e.g. kiosk, delta.com, etc.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="ApplicationId" type="string">
+                    <annotation>
+                        <documentation>
+					Each client should have a unique identifier. This is
+					defined by Worldspan.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="ApplicationVersion" type="string">
+                    <annotation>
+                        <documentation>
+					Logged for debugging and possibly used for routing.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="Company" type="string">
+                    <annotation>
+                        <documentation>
+					Logged for debugging and possibly used for routing.
+					For DT, it would all be Delta.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="DebugOptions" type="string">
+                    <annotation>
+                        <documentation>
+					If not empty, debug information will be included in
+					the response. The debug information will include,
+					among other things, the actual request/response
+					sent/received from the data sources used in the
+					service and the current configuration settings.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="Description" type="string">
+                    <annotation>
+                        <documentation>
+					The description of the transaction or session. This
+					is also provided by the client and is used in
+					instrumentation logging and reporting.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="ExternalVendorFlag" type="string">
+                    <annotation>
+                        <documentation>
+					Default is N. This flag needs to be set to 'Y' if
+					the request is for external Vendor.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="Location" type="string">
+                    <annotation>
+                        <documentation>
+					Logged for debugging and possibly used for routing.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="SessionId" type="string">
+                    <annotation>
+                        <documentation>
+					The session cookie that was provided by the
+					Session.Create service.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="TestLab" type="string">
+                    <annotation>
+                        <documentation>
+					Use this parameter if the request need to be routed
+					to a particular test lab (TSAJ..TSAT..ETC). This
+					should be used only for debugging puposes while the
+					default lab is not available. This parameter should
+					never be used in Production Environment.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="TransactionId" type="string">
+                    <annotation>
+                        <documentation>
+					The unique transaction id for this session. This
+					must be created and provided by the client and is
+					used in instrumentation logging and reporting.
+				</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="TurnOffResponseInfo" type="string">
+                    <annotation>
+                        <documentation>By default, all operation responses may return ResponseInfo elements. Set this to "Y" to not get back any ResponseInfo elements in the response.		</documentation>
+                    </annotation>
+                </attribute>
+            </complexType>
+            <element name="DBConnectionInfo" type="tns:DBConnectionInfoType"/>
+            <element name="HostContextParams" type="tns:HostContextParamsType"/>
+            <element name="RequestInfo" type="tns:RequestInfoType"/>
+        </schema>
+        <schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/ptrauthdata/v2" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.delta.com/common/ptrauthdata/v2">
+            <complexType name="PrinterAuthorizationDataType">
+                <attribute name="ATBPrinterAddress" type="string">
+                    <annotation>
+                        <documentation>an6</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="AdminPrinterAddress" type="string">
+                    <annotation>
+                        <documentation>an6</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="BagPrinterAddress" type="string">
+                    <annotation>
+                        <documentation>an6</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="BoardingCardPrinterAddress" type="string">
+                    <annotation>
+                        <documentation>an6 
+					ET-6000 can be used for 2D boarding cards
+				        IER-567 if specified used for everything 
+				        ATB can be used for 1D boarding cards
+ 				</documentation>
+                    </annotation>
+                </attribute>
+            </complexType>
+            <element name="PrinterAuthorizationData" type="tns:PrinterAuthorizationDataType"/>
+        </schema>
+        <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/checkhealth/v3" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:y="http://schemas.delta.com/common/checkhealth/v3">
+            <xsd:complexType name="CheckHealthGenericRequestType">
+                <xsd:annotation>
+                    <xsd:documentation>
+				RequestType that will accept a string. If the check
+				health function does not require any special inputs, use
+				this request type.
+			</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="AnyString" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="CheckHealthResponseType">
+                <xsd:annotation>
+                    <xsd:documentation>
+				ResponseType represents the status of the entire service
+				as well as information on the dependencies of the
+				service. For example, if a service retrieves information
+				from the database, the response will contain an status
+				entry for the service as well as the database.
+			</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="ServiceHealthStatus" type="y:HealthStatusType">
+                        <xsd:annotation>
+                            <xsd:documentation>
+						Health of the entire service; the result value
+						is determined per the need and dependencies of
+						the service. In this scenario, if a critical
+						dependency failed, then the ServiceHealthStatus
+						would be FATAL...if it is a minor piece that is
+						broken/down, then the service is still ok. It is
+						the provider of the service that determines this
+						result; there is no hard rule.
+					</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="HealthMessage" type="y:HealthMessageType">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                		Health of one or more dependencies.
+                	</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="HealthMessageType">
+                <xsd:annotation>
+                    <xsd:documentation>
+				HealthMessage providing health status information on
+				each of the dependencies of the service. For example, a
+				database, another service, file system, email server,
+				etc.
+			</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="SystemName" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+						System or Dependency name- for example,
+						SkyMilesAuthenticationService or CustomerDB,
+						even D007PROD
+					</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="Message" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+						Message regarding the problem or the status
+						provided
+					</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="Status" type="y:HealthStatusType">
+                        <xsd:annotation>
+                            <xsd:documentation>
+						Status of the system/dependency
+					</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:simpleType name="HealthStatusType">
+                <xsd:annotation>
+                    <xsd:documentation>
+        		HealthStatus provides an indication as to the health
+        	</xsd:documentation>
+                </xsd:annotation>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="FATAL">
+                        <xsd:annotation>
+                            <xsd:documentation>FATAL : cannot achieve desired goals which are considered critical by the provider</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:enumeration>
+                    <xsd:enumeration value="WARN">
+                        <xsd:annotation>
+                            <xsd:documentation>WARN : certain pieces of the service may not be functioning properly, but the overall goals of the provider is still achieved</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:enumeration>
+                    <xsd:enumeration value="OK">
+                        <xsd:annotation>
+                            <xsd:documentation>OK : no problems of any kind were detected</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:enumeration>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:element name="CheckHealthRequest" type="y:CheckHealthGenericRequestType"/>
+            <xsd:element name="CheckHealthResponse" type="y:CheckHealthResponseType"/>
+        </xsd:schema>
+        <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://schemas.delta.com/specialpassengerinfolisttypes/v1" xmlns:advm="http://schemas.delta.com/common/advisorymessage/v2" xmlns:debug="http://schemas.delta.com/common/debuginfo/v4" xmlns:err="http://schemas.delta.com/common/error/v4" xmlns:ri="http://schemas.delta.com/common/requestinfo/v4" xmlns:rsp="http://schemas.delta.com/common/responseinfo/v1" xmlns:stmp="http://schemas.delta.com/common/stamping/v2" xmlns:tns="http://schemas.delta.com/specialpassengerinfolisttypes/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.delta.com/common/stamping/v2"/>
+            <xsd:import namespace="http://schemas.delta.com/common/debuginfo/v4"/>
+            <xsd:import namespace="http://schemas.delta.com/common/requestinfo/v4"/>
+            <xsd:import namespace="http://schemas.delta.com/common/responseinfo/v1"/>
+            <xsd:import namespace="http://schemas.delta.com/common/advisorymessage/v2"/>
+            <xsd:complexType name="FlightInquiryInfoType">
+                <xsd:attribute name="AirlineCode" type="xsd:string"/>
+                <xsd:attribute name="DepartureDate" type="xsd:string"/>
+                <xsd:attribute name="DestinationAirportCode" type="xsd:string"/>
+                <xsd:attribute name="FlightNumber" type="xsd:string"/>
+                <xsd:attribute name="OriginAirportCode" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="LoyaltyInquiryInfoType">
+                <xsd:attribute name="AirlineCode" type="xsd:string"/>
+                <xsd:attribute name="LoyaltyMemberId" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="OnDemandRequestInfoType">
+                <xsd:attribute name="BoardPoint" type="xsd:string"/>
+                <xsd:attribute name="Date" type="xsd:string"/>
+                <xsd:attribute name="FlightNumber" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="OnDemandRequestType">
+                <xsd:sequence>
+                    <xsd:element ref="ri:RequestInfo"/>
+                    <xsd:element ref="tns:OnDemandRequestInfo"/>
+                    <xsd:element minOccurs="0" ref="stmp:StampingInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="OnDemandResponseType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="advm:AdvisoryMessage"/>
+                    <xsd:element minOccurs="0" ref="rsp:ResponseInfo"/>
+                    <xsd:element minOccurs="0" ref="debug:DebugInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="OtherInquiryInfoType">
+                <xsd:attribute name="GovernmentId" type="xsd:string"/>
+                <xsd:attribute name="PnrLocatorNum" type="xsd:string"/>
+                <xsd:attribute name="TicketNumber" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="PassengerInfoType">
+                <xsd:attribute name="ActualCompartment" type="xsd:string"/>
+                <xsd:attribute name="ArrivalOrgAirportCode" type="xsd:string"/>
+                <xsd:attribute name="ArrivalSegOperatingAirlineCode" type="xsd:string"/>
+                <xsd:attribute name="ArrivalSegOperatingFlightNumber" type="xsd:string"/>
+                <xsd:attribute name="BookedCompartment" type="xsd:string"/>
+                <xsd:attribute name="BookingCreationGDT" type="xsd:string"/>
+                <xsd:attribute name="CheckInLocalDate" type="xsd:string"/>
+                <xsd:attribute name="CheckInLocalTime" type="xsd:string"/>
+                <xsd:attribute name="CustomerId" type="xsd:string"/>
+                <xsd:attribute name="DestinationAirportCode" type="xsd:string"/>
+                <xsd:attribute name="FileReceivedLocalDate" type="xsd:string"/>
+                <xsd:attribute name="FileReceivedLocalTimeStamp" type="xsd:string"/>
+                <xsd:attribute name="FlightCancelInd" type="xsd:string"/>
+                <xsd:attribute name="FrequentFlyerAirlineCode" type="xsd:string"/>
+                <xsd:attribute name="FrequentFlyerId" type="xsd:string"/>
+                <xsd:attribute name="FrequentTierLevelDesc" type="xsd:string"/>
+                <xsd:attribute name="GovtDocumentNumber" type="xsd:string"/>
+                <xsd:attribute name="InventoryClassCode" type="xsd:string"/>
+                <xsd:attribute name="LegLocalDepartureDate" type="xsd:string"/>
+                <xsd:attribute name="LegLocalDepartureYearMonth" type="xsd:string"/>
+                <xsd:attribute name="MultiDepartureSequenceNumber" type="xsd:string"/>
+                <xsd:attribute name="Name" type="xsd:string"/>
+                <xsd:attribute name="NextSegDstAirportCode" type="xsd:string"/>
+                <xsd:attribute name="NextSegOperatingAirlineCode" type="xsd:string"/>
+                <xsd:attribute name="NextSegOperatingFlightNumber" type="xsd:string"/>
+                <xsd:attribute name="OnBoardLocalDate" type="xsd:string"/>
+                <xsd:attribute name="OnBoardLocalTime" type="xsd:string"/>
+                <xsd:attribute name="OperationalAirlineCode" type="xsd:string"/>
+                <xsd:attribute name="OperationalFlightNumber" type="xsd:string"/>
+                <xsd:attribute name="OriginAirportCode" type="xsd:string"/>
+                <xsd:attribute name="PnrLocatorNum" type="xsd:string"/>
+                <xsd:attribute name="RecordProcessDate" type="xsd:string"/>
+                <xsd:attribute name="RowSeatNumber" type="xsd:string"/>
+                <xsd:attribute name="SSRTypeCode" type="xsd:string"/>
+                <xsd:attribute name="SpilTypeCode" type="xsd:string"/>
+                <xsd:attribute name="TicketDocumentIssueLocalDate" type="xsd:string"/>
+                <xsd:attribute name="TicketNumber" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="PassengerInquiryInfoType">
+                <xsd:attribute name="DepartureDate" type="xsd:string"/>
+                <xsd:attribute name="Name" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="PassengerRemarkInfoType">
+                <xsd:attribute name="FileReceivedLocalDate" type="xsd:string"/>
+                <xsd:attribute name="FileReceivedLocalTimeStamp" type="xsd:string"/>
+                <xsd:attribute name="LegLocalDepartureDate" type="xsd:string"/>
+                <xsd:attribute name="LegLocalDepartureYearMonth" type="xsd:string"/>
+                <xsd:attribute name="MultiDepartureSequenceNumber" type="xsd:string"/>
+                <xsd:attribute name="OperationalAirlineCode" type="xsd:string"/>
+                <xsd:attribute name="OperationalFlightNumber" type="xsd:string"/>
+                <xsd:attribute name="OriginAirportCode" type="xsd:string"/>
+                <xsd:attribute name="RecordProcessDate" type="xsd:string"/>
+                <xsd:attribute name="RemarkSequenceNumber" type="xsd:string"/>
+                <xsd:attribute name="RemarkText" type="xsd:string"/>
+                <xsd:attribute name="RemarkTypeCode" type="xsd:string"/>
+                <xsd:attribute name="RowSeatNumber" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="PassengerResponseInfoType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="tns:PassengerInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="RetrievePassengerInfoType">
+                <xsd:choice>
+                    <xsd:element ref="tns:FlightInquiryInfo"/>
+                    <xsd:element ref="tns:LoyaltyInquiryInfo"/>
+                    <xsd:element ref="tns:OtherInquiryInfo"/>
+                    <xsd:element ref="tns:PassengerInquiryInfo"/>
+                </xsd:choice>
+                <xsd:attribute name="OnDemandFileRcvdLclTms" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="RetrievePassengerRequestType">
+                <xsd:sequence>
+                    <xsd:element ref="ri:RequestInfo"/>
+                    <xsd:element ref="tns:RetrievePassengerInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="RetrievePassengerResponseType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="advm:AdvisoryMessage"/>
+                    <xsd:element minOccurs="0" ref="rsp:ResponseInfo"/>
+                    <xsd:element minOccurs="0" ref="debug:DebugInfo"/>
+                    <xsd:element minOccurs="0" ref="tns:PassengerResponseInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="RetrieveSSRRequestType">
+                <xsd:sequence>
+                    <xsd:element ref="ri:RequestInfo"/>
+                    <xsd:element ref="tns:SSRInquiryInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="RetrieveSSRResponseType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="advm:AdvisoryMessage"/>
+                    <xsd:element minOccurs="0" ref="rsp:ResponseInfo"/>
+                    <xsd:element minOccurs="0" ref="debug:DebugInfo"/>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="tns:SSRResponseInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="RetrieveWaitListRequestType">
+                <xsd:sequence>
+                    <xsd:element ref="ri:RequestInfo"/>
+                    <xsd:element ref="tns:WaitListInquiryInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="RetrieveWaitListResponseType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="advm:AdvisoryMessage"/>
+                    <xsd:element minOccurs="0" ref="rsp:ResponseInfo"/>
+                    <xsd:element minOccurs="0" ref="debug:DebugInfo"/>
+                    <xsd:element minOccurs="0" ref="tns:WaitListResponseInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="SSRInquiryInfoType">
+                <xsd:attribute name="AirlineCode" type="xsd:string"/>
+                <xsd:attribute name="DepartureDate" type="xsd:string"/>
+                <xsd:attribute name="FlightNumber" type="xsd:string"/>
+                <xsd:attribute name="OnDemandFileRcvdLclTms" type="xsd:string"/>
+                <xsd:attribute name="RowSeatNumber" type="xsd:string"/>
+                <xsd:attribute name="SSRCode" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="SSRResponseInfoType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="tns:PassengerRemarkInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="WaitListInquiryInfoType">
+                <xsd:attribute name="AirlineCode" type="xsd:string"/>
+                <xsd:attribute name="DepartureDate" type="xsd:string"/>
+                <xsd:attribute name="FlightNumber" type="xsd:string"/>
+                <xsd:attribute name="OnDemandFileRcvdLclTms" type="xsd:string"/>
+                <xsd:attribute name="PassengerName" type="xsd:string"/>
+                <xsd:attribute name="PnrLocatorNum" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="WaitListPassengerInfoType">
+                <xsd:attribute name="BoardedTypeCode" type="xsd:string"/>
+                <xsd:attribute name="DestinationAirportCode" type="xsd:string"/>
+                <xsd:attribute name="EmployeeSeniorityDate" type="xsd:string"/>
+                <xsd:attribute name="FileReceivedLocalDate" type="xsd:string"/>
+                <xsd:attribute name="FileReceivedLocalTimeStamp" type="xsd:string"/>
+                <xsd:attribute name="LegLocalDepartureDate" type="xsd:string"/>
+                <xsd:attribute name="LegLocalDepartureYearMonth" type="xsd:string"/>
+                <xsd:attribute name="MultiDepartureSequenceNumber" type="xsd:string"/>
+                <xsd:attribute name="OperationalAirlineCode" type="xsd:string"/>
+                <xsd:attribute name="OperationalFlightNumber" type="xsd:string"/>
+                <xsd:attribute name="OriginAirportCode" type="xsd:string"/>
+                <xsd:attribute name="PassengerName" type="xsd:string"/>
+                <xsd:attribute name="PnrLocatorNum" type="xsd:string"/>
+                <xsd:attribute name="RecordProcessDate" type="xsd:string"/>
+                <xsd:attribute name="ReservationTypeCode" type="xsd:string"/>
+                <xsd:attribute name="TravelClassCode" type="xsd:string"/>
+                <xsd:attribute name="VerifiedTypeCode" type="xsd:string"/>
+                <xsd:attribute name="WaitlistPassengerListingNumber" type="xsd:string"/>
+                <xsd:attribute name="WaitlistSvcTypeCode" type="xsd:string"/>
+                <xsd:attribute name="WaitlistTypeCode" type="xsd:string"/>
+                <xsd:attribute name="WaitlistUTCCreationTime" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="WaitListResponseInfoType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="tns:WaitListPassengerInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="FlightInquiryInfo" type="tns:FlightInquiryInfoType"/>
+            <xsd:element name="LoyaltyInquiryInfo" type="tns:LoyaltyInquiryInfoType"/>
+            <xsd:element name="OnDemandRequest" type="tns:OnDemandRequestType"/>
+            <xsd:element name="OnDemandRequestInfo" type="tns:OnDemandRequestInfoType"/>
+            <xsd:element name="OnDemandResponse" type="tns:OnDemandResponseType"/>
+            <xsd:element name="OtherInquiryInfo" type="tns:OtherInquiryInfoType"/>
+            <xsd:element name="PassengerInfo" type="tns:PassengerInfoType"/>
+            <xsd:element name="PassengerInquiryInfo" type="tns:PassengerInquiryInfoType"/>
+            <xsd:element name="PassengerRemarkInfo" type="tns:PassengerRemarkInfoType"/>
+            <xsd:element name="PassengerResponseInfo" type="tns:PassengerResponseInfoType"/>
+            <xsd:element name="RetrievePassengerInfo" type="tns:RetrievePassengerInfoType"/>
+            <xsd:element name="RetrievePassengerRequest" type="tns:RetrievePassengerRequestType"/>
+            <xsd:element name="RetrievePassengerResponse" type="tns:RetrievePassengerResponseType"/>
+            <xsd:element name="RetrieveSSRRequest" type="tns:RetrieveSSRRequestType"/>
+            <xsd:element name="RetrieveSSRResponse" type="tns:RetrieveSSRResponseType"/>
+            <xsd:element name="RetrieveWaitListRequest" type="tns:RetrieveWaitListRequestType"/>
+            <xsd:element name="RetrieveWaitListResponse" type="tns:RetrieveWaitListResponseType"/>
+            <xsd:element name="SSRInquiryInfo" type="tns:SSRInquiryInfoType"/>
+            <xsd:element name="SSRResponseInfo" type="tns:SSRResponseInfoType"/>
+            <xsd:element name="WaitListInquiryInfo" type="tns:WaitListInquiryInfoType"/>
+            <xsd:element name="WaitListPassengerInfo" type="tns:WaitListPassengerInfoType"/>
+            <xsd:element name="WaitListResponseInfo" type="tns:WaitListResponseInfoType"/>
+        </xsd:schema>
+        <schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/responseinfo/v1" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.delta.com/common/responseinfo/v1">
+            <complexType name="ResponseInfoType">
+                <attribute name="AdditionalInfo" type="string">
+                    <annotation>
+                        <documentation>May contain semi-colon delimited strings</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="ServiceTrackingId" type="string">
+                    <annotation>
+                        <documentation>May be provided by service...The concatenated node name, service name, operation name, and a unique randomly generated number.  If client logs this, then we can tie the service log entries to the client log entries (especially if client did not send a TransactionId)</documentation>
+                    </annotation>
+                </attribute>
+                <attribute name="TransactionId" type="string">
+                    <annotation>
+                        <documentation>May be provided by client...should be same for each "transaction" on client side</documentation>
+                    </annotation>
+                </attribute>
+            </complexType>
+            <element name="ResponseInfo" type="tns:ResponseInfoType"/>
+        </schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/advisorymessage/v2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:y="http://schemas.delta.com/common/advisorymessage/v2">
+            <xs:complexType name="AdvisoryMessageType">
+                <xs:attribute name="FreeformText" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>X[1..64]</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="MessageNumber" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>
+						X[1..5] (not used)
+					</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Process" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>
+						X[1..6] (not used) process where message
+						generated
+					</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Spare" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>
+						[1..6] (not used) Spares for TPF use
+					</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="SscRequest" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>X[6] (not used)</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:complexType>
+            <xs:element name="AdvisoryMessage" type="y:AdvisoryMessageType"/>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/debuginfo/v4" xmlns:pref1="http://schemas.delta.com/common/requestinfo/v4" xmlns:tns="http://schemas.delta.com/common/debuginfo/v4" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:import namespace="http://schemas.delta.com/common/requestinfo/v4"/>
+            <xs:complexType name="DebugInfoType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="ConfigurationSettings" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+						Configuration Settings
+					</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="DataSourceRequest" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+						Actual data sent to Data Source
+					</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="DataSourceResponse" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+						Actual data received from Data Source
+					</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="DataSourceName" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+						Name of the Data Source
+					</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="TransportInfo" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+						e.g.Transport Wsine
+					</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Timers" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+						Execution times at various design layers
+					</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="AdditionalInfo" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+					any information that would be helpful in understanding the response
+					e.g. the specific step name in a series of steps
+					</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="RequestInfo" type="pref1:RequestInfoType">
+                        <xs:annotation>
+                            <xs:documentation>
+						The actual RequestInfo objects sent within the
+						request.
+					</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="DebugInfo" type="tns:DebugInfoType"/>
+        </xs:schema>
+        <schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.delta.com/common/stamping/v2" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ptr="http://schemas.delta.com/common/ptrauthdata/v2" xmlns:tns="http://schemas.delta.com/common/stamping/v2" xmlns:usr="http://schemas.delta.com/common/userauthdata/v2">
+            <import namespace="http://schemas.delta.com/common/userauthdata/v2"/>
+            <import namespace="http://schemas.delta.com/common/ptrauthdata/v2"/>
+            <complexType name="StampingInfoType">
+                <sequence>
+                    <element minOccurs="0" ref="usr:UserAuthorizationData"/>
+                    <element minOccurs="0" ref="ptr:PrinterAuthorizationData"/>
+                </sequence>
+            </complexType>
+            <element name="StampingInfo" type="tns:StampingInfoType"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="CheckHealthRequest">
+        <wsdl:part element="ns0:CheckHealthRequest" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="CheckHealthResponse">
+        <wsdl:part element="ns0:CheckHealthResponse" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="RetrieveSSRRequest">
+        <wsdl:part element="ns1:RetrieveSSRRequest" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="RetrieveSSRResponse">
+        <wsdl:part element="ns1:RetrieveSSRResponse" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="BusinessFault">
+        <wsdl:part element="ns2:BusinessFault" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="SystemFault">
+        <wsdl:part element="ns2:SystemFault" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="OnDemandRequest">
+        <wsdl:part element="ns1:OnDemandRequest" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="OnDemandResponse">
+        <wsdl:part element="ns1:OnDemandResponse" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="RetrievePassengerRequest">
+        <wsdl:part element="ns1:RetrievePassengerRequest" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="RetrievePassengerResponse">
+        <wsdl:part element="ns1:RetrievePassengerResponse" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="RetrieveWaitListRequest">
+        <wsdl:part element="ns1:RetrieveWaitListRequest" name="params"/>
+    </wsdl:message>
+    <wsdl:message name="RetrieveWaitListResponse">
+        <wsdl:part element="ns1:RetrieveWaitListResponse" name="params"/>
+    </wsdl:message>
+    <wsdl:portType name="SpecialPassengerInfoList">
+        <wsdl:operation name="CheckHealth">
+            <wsdl:input message="tns:CheckHealthRequest"/>
+            <wsdl:output message="tns:CheckHealthResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveSSR">
+            <wsdl:input message="tns:RetrieveSSRRequest"/>
+            <wsdl:output message="tns:RetrieveSSRResponse"/>
+            <wsdl:fault message="tns:BusinessFault" name="businessFault"/>
+            <wsdl:fault message="tns:SystemFault" name="systemFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="OnDemand">
+            <wsdl:input message="tns:OnDemandRequest"/>
+            <wsdl:output message="tns:OnDemandResponse"/>
+            <wsdl:fault message="tns:BusinessFault" name="businessFault"/>
+            <wsdl:fault message="tns:SystemFault" name="systemFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrievePassenger">
+            <wsdl:input message="tns:RetrievePassengerRequest"/>
+            <wsdl:output message="tns:RetrievePassengerResponse"/>
+            <wsdl:fault message="tns:BusinessFault" name="businessFault"/>
+            <wsdl:fault message="tns:SystemFault" name="systemFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveWaitList">
+            <wsdl:input message="tns:RetrieveWaitListRequest"/>
+            <wsdl:output message="tns:RetrieveWaitListResponse"/>
+            <wsdl:fault message="tns:BusinessFault" name="businessFault"/>
+            <wsdl:fault message="tns:SystemFault" name="systemFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SpecialPassengerInfoList_EP" type="tns:SpecialPassengerInfoList">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="CheckHealth">
+            <wsdl:documentation/>
+            <soap:operation soapAction="CheckHealth" style="document"/>
+            <wsdl:input>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveSSR">
+            <wsdl:documentation/>
+            <soap:operation soapAction="RetrieveSSR" style="document"/>
+            <wsdl:input>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="businessFault">
+                <soap:fault name="businessFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="systemFault">
+                <soap:fault name="systemFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="OnDemand">
+            <wsdl:documentation/>
+            <soap:operation soapAction="OnDemandPush" style="document"/>
+            <wsdl:input>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="businessFault">
+                <soap:fault name="businessFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="systemFault">
+                <soap:fault name="systemFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="RetrievePassenger">
+            <wsdl:documentation/>
+            <soap:operation soapAction="Retrieve" style="document"/>
+            <wsdl:input>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="businessFault">
+                <soap:fault name="businessFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="systemFault">
+                <soap:fault name="systemFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveWaitList">
+            <wsdl:documentation/>
+            <soap:operation soapAction="RetrieveWaitList" style="document"/>
+            <wsdl:input>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="params" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="businessFault">
+                <soap:fault name="businessFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="systemFault">
+                <soap:fault name="systemFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SpecialPassengerInfoList">
+        <wsdl:port binding="tns:SpecialPassengerInfoList_EP" name="SpecialPassengerInfoList_EP">
+            <soap:address location="http://10.6.163.175:32045/specialpassengerinfolist"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

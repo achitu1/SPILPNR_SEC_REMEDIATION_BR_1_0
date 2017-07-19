@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="spilear" default="package" basedir=".">
+	<description>
+        PNR ejb module
+    </description>	
+	
+	<property name="app.name" value="SPIL"/>
+	<property name="build.home" location="../bin"/>
+	<property name="src.home" location="../src"/>
+	<property name="web_content.home" location="../WebContent"/>
+	<property name="dist.home" location="../dist"/>
+	<property name="deploy.home" value="../pkg/deploy"/>
+	<property file="build.properties"/>
+	
+	<path id="compile.classpath">
+		<!-- Include all JAR files on which your application will depend.  -->
+		<pathelement location="${pnrjejb}"/>
+		<pathelement location="${spljejb}"/>
+		<pathelement location="${jakarta-regexp}"/>
+ 		<pathelement location="${log4j}"/>
+		<pathelement location="${pracommon}"/>
+		<pathelement location="${struts}"/>
+		<pathelement location="${j2ee}"/>
+		<pathelement location="${com.ibm.ws.runtime}"/>
+		<pathelement location="${axis}"/>
+		<pathelement location="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPIL/WebContent/WEB-INF/lib/quartz-all-1.6.1.jar"/>
+		<pathelement location="${server}/plugins/com.ibm.ws.ejbportable.jar"/>
+		<pathelement location="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPIL/WebContent/WEB-INF/lib/commons-beanutils.jar"/>
+		<pathelement location="${server}/lib/activation-impl.jar"/>
+		<pathelement location="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPIL/WebContent/WEB-INF/lib/displaytag-1.0.jar" />
+	</path>
+	
+	<target name="clean" description="clean up">
+		<delete dir="${build.home}" />
+		<delete dir="${dist.home}" />
+		<mkdir dir="${build.home}" />
+		<mkdir dir="${dist.home}" />
+	</target>
+	
+	<target name="init" depends="clean,remove_class_files_from_src">
+		<echo message=":: JAVA_HOME=${java.home}" />
+		<pathconvert pathsep="${line.separator}" property="echo.classpath" refid="compile.classpath">
+		</pathconvert>
+		<!-- Write the result to the console -->
+		<echo message=":: CLASSPATH=${echo.classpath}" />
+	</target>
+	
+	<target name="compile" depends="init" description="compile the source ">
+
+		
+		
+		<copy todir="../bin/server" overwrite="true">
+			<fileset
+				dir="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPIL/WebContent" excludes="**/*.db,**/*.java,**/*.class">
+			</fileset>
+		</copy>
+		
+		<javac nowarn="true" srcdir="../src"
+			destdir="${build.home}/server/WEB-INF/classes" includeAntRuntime="true" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}"
+			target="1.6" source="1.6">
+			<classpath>
+				<path refid="compile.classpath"/>
+			</classpath>
+		</javac>
+
+	</target>
+	
+
+	
+	<target name="package" depends="compile" description="generate the core jar">		 
+		<!-- create the server side jar -->
+		 <war destfile="${dist.home}/${app.name}.war" manifest="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPIL/WebContent/META-INF/MANIFEST.MF" 
+		webxml="${vobs}/crs/Java_projects/RAD_Workspaces/SPILPNR/SPIL/WebContent/WEB-INF/web.xml">
+		        <fileset dir="${build.home}/server"/>
+		</war>
+	</target>
+
+	<target name="remove_class_files_from_src" description="remove any .class files from the src path">
+		<delete verbose="true">
+			<fileset dir="${src.home}" includes="**/*.class"/>
+		</delete>
+		</target>
+	</project>

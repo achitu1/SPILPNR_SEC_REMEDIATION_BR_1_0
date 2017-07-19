@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\pci\v1\pcitoken
+2
+3
+d:PciToken.java|1|15b7c614c5a|15b6|45c8ec5d|a901f9a8711211e099a8000180ed7ddd|0
+12:ObjectFactory.java|1|15b7c614bb5|4df|81b77ae5|a901f988711211e099a8000180ed7ddd|0
+11:package-info.java|1|15b7c614c09|ec|18e94663|a901f998711211e099a8000180ed7ddd|0

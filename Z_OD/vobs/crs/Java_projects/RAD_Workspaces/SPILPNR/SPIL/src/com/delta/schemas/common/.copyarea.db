@@ -1,0 +1,13 @@
+ClearCase CopyAreaDB|4
+vobs\crs\Java_projects\RAD_Workspaces\SPILPNR\SPIL\src\com\delta\schemas\common
+2
+9
+b:checkhealth|2|0|0|0|7727c61a0f1611e796af00306e4b3e41|0
+5:fault|2|0|0|0|ad79b5f60f1611e7971800306e4b3e41|0
+b:ptrauthdata|2|0|0|0|ea5c8a090f1611e7977d00306e4b3e41|0
+8:stamping|2|0|0|0|c2e9a3df0f1711e7989b00306e4b3e41|0
+c:responseinfo|2|0|0|0|a952e6b50f1711e7987600306e4b3e41|0
+9:debuginfo|2|0|0|0|955caa650f1611e796e000306e4b3e41|0
+f:advisorymessage|2|0|0|0|6203f6820f1611e7968600306e4b3e41|0
+c:userauthdata|2|0|0|0|e3739f000f1711e798d400306e4b3e41|0
+b:requestinfo|2|0|0|0|239789aa0f1711e797c900306e4b3e41|0
